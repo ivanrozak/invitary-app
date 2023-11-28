@@ -7,7 +7,10 @@ const DCWellcomeScreen = () => {
   return (
     <Container centered>
       <AnimatePresence>
-        <motion.div>Welcome Screen</motion.div>
+        <motion.div className="text-center">
+          <p>Diamond Cross</p>
+          <p>Loading</p>
+        </motion.div>
       </AnimatePresence>
     </Container>
   );

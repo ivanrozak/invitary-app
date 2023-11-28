@@ -3,13 +3,15 @@ import DCHeader from "./DCHeader";
 import DCNavbar from "./DCNavbar";
 import DCSection from "./DCSection";
 import DCImage from "./DCImage";
+import DCSponsors from "./DCSponsors";
 
 const DiamondCross = () => {
   return (
-    <div>
+    <div className="bg-[#f8f7f4] text-[#877964]">
       <DCNavbar />
       <DCHeader />
-      <DCSection />
+      <DCSponsors />
+      <DCSection reverse />
       <DCImage />
       <DCImage />
       <DCSection />

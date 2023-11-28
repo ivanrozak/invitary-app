@@ -4,6 +4,7 @@ import {
   Arimo,
   Cormorant_Garamond,
 } from "next/font/google";
+import localFont from "next/font/local";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -27,5 +28,10 @@ export const cormorant = Cormorant_Garamond({
 export const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-roboto-mono",
+  display: "swap",
+});
+
+export const schnyder = localFont({
+  src: "../fonts/SchnyderMLight.woff2",
   display: "swap",
 });
