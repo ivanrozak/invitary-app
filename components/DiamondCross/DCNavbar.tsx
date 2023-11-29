@@ -10,9 +10,9 @@ const DCNavbar = () => {
   console;
   const rightMenu = menus.slice(half, menus.length);
   return (
-    <nav className="pt-16 mb-8">
-      <div className="mx-auto max-w-screen-lg h-[55px] flex items-center justify-evenly text-xs">
-        <div className={cn(arimo.className + " flex gap-4")}>
+    <nav className="pt-16 pb-8">
+      <div className="mx-auto max-w-screen-xl h-[55px] flex items-center justify-evenly text-xs">
+        <div className={cn(arimo.className + " flex gap-8")}>
           {leftMenu.map((m) => (
             <div key={m}>{m}</div>
           ))}
@@ -25,7 +25,7 @@ const DCNavbar = () => {
             alt="main logo"
           />
         </div>
-        <div className={cn(arimo.className + " flex gap-4")}>
+        <div className={cn(arimo.className + " flex gap-8")}>
           {rightMenu.map((m) => (
             <div key={m}>{m}</div>
           ))}
