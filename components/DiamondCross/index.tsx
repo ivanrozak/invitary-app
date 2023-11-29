@@ -2,7 +2,6 @@ import React from "react";
 import DCHeader from "./DCHeader";
 import DCNavbar from "./DCNavbar";
 import DCSection from "./DCSection";
-import DCImage from "./DCImage";
 import DCSponsors from "./DCSponsors";
 
 const DiamondCross = () => {
@@ -11,10 +10,12 @@ const DiamondCross = () => {
       <DCNavbar />
       <DCHeader />
       <DCSponsors />
-      <DCSection reverse />
-      <DCImage />
-      <DCImage />
-      <DCSection />
+      <DCSection imgUrl="https://uploads-ssl.webflow.com/5f8848c8ce7ec916d993507c/5f993b2f985cbd4c5f030abb_photo%201%20right%20%5Bupdated%5D.jpg" />
+      <DCSection
+        imgUrl="https://uploads-ssl.webflow.com/5f8848c8ce7ec916d993507c/5f993b2f985cbd4c5f030abb_photo%201%20right%20%5Bupdated%5D.jpg"
+        reverse
+        variant="secondary"
+      />
       <div className="h-screen">footer</div>
     </div>
   );
