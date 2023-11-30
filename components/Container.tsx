@@ -1,25 +1,28 @@
-import { cn } from "@nextui-org/react";
 import React from "react";
-
-type ContainerType = "fullscreen" | "default";
+import { cn } from "@nextui-org/react";
 
 const Container = ({
-  type = "fullscreen",
-  centered = false,
   children,
-  screen = "lg",
+  centered = false,
+  noPadding = false,
+  fullWidth = false,
+  fullHeight = false,
+  className,
 }: {
-  type?: ContainerType;
+  children?: React.ReactNode;
   centered?: boolean;
-  children: React.ReactNode;
-  screen?: string;
+  noPadding?: boolean;
+  fullWidth?: boolean;
+  fullHeight?: boolean;
+  className?: string;
 }) => {
   return (
     <div
-      className={cn("w-full px-6", {
-        "h-[100svh]": type === "fullscreen",
+      className={cn("w-full " + className, {
+        "p-6": !noPadding,
+        "h-[100svh]": fullHeight,
         "flex justify-center items-center": centered,
-        "max-w-screen-lg mx-auto": screen === "lg",
+        "max-w-screen-xl mx-auto": !fullWidth,
       })}
     >
       {children}

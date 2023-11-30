@@ -4,7 +4,7 @@ import React from "react";
 
 const ComponentPage = () => {
   return (
-    <Container type="default">
+    <Container>
       <Typhography />
     </Container>
   );
