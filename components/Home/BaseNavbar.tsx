@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Navbar,
@@ -11,11 +10,13 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@nextui-org/skeleton";
+const ThemeSwitcher = dynamic(() => import("./ThemeSwitcher"), {
+  loading: () => <Skeleton className="w-[60px] h-[32px] rounded-full" />,
+});
 
 export default function BaseNavbar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
   const menuItems = [
     "Profile",
     "Dashboard",
@@ -30,12 +31,9 @@ export default function BaseNavbar() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar>
       <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
+        <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand>
           {/* <AcmeLogo /> */}
           <p className="font-bold text-inherit">INVITARY</p>

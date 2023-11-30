@@ -1,12 +1,11 @@
 import Home from "@/components/Home";
+import dynamic from "next/dynamic";
 import React from "react";
 
 const HomePage = () => {
   return (
     <>
-      <div className="dark">
-        <Home />
-      </div>
+      <Home />
     </>
   );
 };
