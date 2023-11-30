@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#0A090C",
+      },
       fontFamily: {
         arimo: ["var(--font-arimo)"],
         cormorant: ["var(--font-cormorant)"],

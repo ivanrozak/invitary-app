@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
 import Provider from "./providers";
+import { inter } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Invitary | Next step of website invitations",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className={inter.className}>
         <Provider>{children}</Provider>
       </body>
     </html>
