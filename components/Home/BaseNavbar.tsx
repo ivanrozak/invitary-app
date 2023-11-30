@@ -31,7 +31,7 @@ export default function BaseNavbar() {
   ];
 
   return (
-    <Navbar>
+    <Navbar maxWidth="xl">
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand>

@@ -9,7 +9,7 @@ const CatalogCard = ({ name, imgSrc }: { name: string; imgSrc: string }) => {
     <Card isFooterBlurred className="w-full h-[400px]" radius="lg">
       <CardHeader className="absolute z-10 top-1 flex-col items-start">
         <p className="text-tiny text-white/60 uppercase font-bold">New</p>
-        <h4 className="font-medium text-2xl">{name}</h4>
+        <h4 className="font-medium text-2xl text-white/80">{name}</h4>
       </CardHeader>
       <Image
         removeWrapper
