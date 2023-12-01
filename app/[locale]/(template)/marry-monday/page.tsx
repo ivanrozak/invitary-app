@@ -1,11 +1,12 @@
-// import MMHeader from "@/components/MarryMonday/MMHeader";
-import MMParalax from "@/components/MarryMonday/MMParalax";
+import MMMain from "@/components/MarryMonday/MMMain";
+import MMNavLink from "@/components/MarryMonday/MMNavLink";
 import React from "react";
 
 const MarryMonday = () => {
   return (
-    <div>
-      <MMParalax />
+    <div className="bg-[#f3f2f1] text-[#284135] w-full h-full">
+      <MMNavLink />
+      <MMMain />
     </div>
   );
 };

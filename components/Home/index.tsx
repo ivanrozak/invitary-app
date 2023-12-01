@@ -12,7 +12,7 @@ const Home = () => {
     {
       name: "Theme Two",
       imgSrc: "/animated-slider/2.png",
-      link: "#",
+      link: "/diamond-cross",
     },
     {
       name: "Theme Three",
