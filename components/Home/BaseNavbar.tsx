@@ -12,7 +12,7 @@ import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@nextui-org/skeleton";
-const ThemeSwitcher = dynamic(() => import("./ThemeSwitcher"), {
+const ThemeSwitcher = dynamic(() => import("../ThemeSwitcher"), {
   loading: () => <Skeleton className="w-[60px] h-[32px] rounded-full" />,
 });
 
@@ -31,7 +31,7 @@ export default function BaseNavbar() {
   ];
 
   return (
-    <Navbar maxWidth="xl">
+    <Navbar maxWidth="xl" shouldHideOnScroll>
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand>
