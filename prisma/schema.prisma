@@ -19,3 +19,54 @@ model Client {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   email String
 }
+
+// User model for representing users
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  username  String
+  email     String    @unique
+  password  String
+  // Add other user-related fields as needed
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Account   Account[]
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// Product model for representing products
+model Product {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  price       Float
+  // Add other product-related fields as needed
+  Order       Order?  @relation(fields: [orderId], references: [id])
+  orderId     String? @db.ObjectId
+}
+
+// Order model for representing orders
+model Order {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String
+  products Product[]
+  total    Float
+  // Add other order-related fields as needed
+}
