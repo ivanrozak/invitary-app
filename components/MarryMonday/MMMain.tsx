@@ -1,4 +1,5 @@
 "use client";
+import { canela } from "@/app/fonts";
 import { IParallax, Parallax, ParallaxLayer } from "@react-spring/parallax";
 import Image from "next/image";
 import React, { useRef } from "react";
@@ -11,13 +12,13 @@ const MMMain = () => {
         <div className="w-full h-full relative">
           <Image
             src="/marry-monday/0.png"
-            className="w-[83vw] h-auto aspect-[500/213] absolute bottom-[23svh] right-0"
+            className="w-[85vw] h-auto aspect-[500/213] absolute bottom-[20svh] right-0"
             width={946}
             height={403}
             alt="alt"
           />
           <div className="absolute w-full h-full flex items-center justify-center">
-            <h1 className="text-7xl font-semibold">
+            <h1 className={canela.className + " text-8xl"}>
               Marry
               <br />
               Monday.
