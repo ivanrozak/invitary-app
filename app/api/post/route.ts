@@ -1,15 +1,34 @@
 import { NextResponse } from "next/server";
-import { allPost, createPost } from "@/prisma/post";
+import { prisma } from "@/lib/prismadb";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { title } = body;
+  const { title, id, description } = body;
 
   if (!title) {
     return new NextResponse("Missing Fields", { status: 400 });
   }
 
-  const post = await allPost();
+  let post;
+
+  if (id) {
+    post = await prisma.post.update({
+      where: {
+        id,
+      },
+      data: {
+        title,
+        description,
+      },
+    });
+  } else {
+    post = await prisma.post.create({
+      data: {
+        title,
+        description,
+      },
+    });
+  }
 
   return NextResponse.json(post);
 }

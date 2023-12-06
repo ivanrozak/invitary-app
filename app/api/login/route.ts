@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 import { compare } from "bcrypt";
+import { sign } from "jsonwebtoken";
 
 // login user
 export async function POST(req: Request) {
@@ -27,5 +28,18 @@ export async function POST(req: Request) {
     return new NextResponse("Invalid email or password", { status: 401 });
   }
 
-  return NextResponse.json(user, { status: 200 });
+  const SECRET = process.env.JWT_SECRET || "DEV";
+
+  const token = sign(
+    { accountId: user.id, userEmail: user.email },
+    SECRET,
+    { expiresIn: "1h" } // Adjust expiration as needed
+  );
+
+  const result = await prisma.user.update({
+    where: { id: user.id },
+    data: { token },
+  });
+
+  return NextResponse.json(result, { status: 200 });
 }
