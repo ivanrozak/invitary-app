@@ -7,6 +7,6 @@ export const {
   useCurrentLocale,
   useChangeLocale,
 } = createI18nClient({
-  en: () => import("./en"),
   id: () => import("./id"),
+  en: () => import("./en"),
 });

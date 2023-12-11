@@ -3,8 +3,17 @@ import { Card, CardHeader, CardFooter } from "@nextui-org/card";
 import { Button } from "@nextui-org/button";
 import { default as NextImage } from "next/image";
 import { Image } from "@nextui-org/image";
+import Link from "next/link";
 
-const CatalogCard = ({ name, imgSrc }: { name: string; imgSrc: string }) => {
+const CatalogCard = ({
+  name,
+  imgSrc,
+  link,
+}: {
+  name: string;
+  imgSrc: string;
+  link: string;
+}) => {
   return (
     <Card isFooterBlurred className="w-full h-[400px]" radius="lg">
       <CardHeader className="absolute z-10 top-1 flex-col items-start">
@@ -24,7 +33,14 @@ const CatalogCard = ({ name, imgSrc }: { name: string; imgSrc: string }) => {
           <p className="text-black text-tiny">Available soon.</p>
           <p className="text-black text-tiny">Get notified.</p>
         </div>
-        <Button className="text-tiny" color="primary" radius="full" size="sm">
+        <Button
+          className="text-tiny"
+          color="primary"
+          radius="full"
+          size="sm"
+          as={Link}
+          href={link}
+        >
           Detail
         </Button>
       </CardFooter>

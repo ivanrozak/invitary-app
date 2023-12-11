@@ -35,3 +35,8 @@ export const schnyder = localFont({
   src: "../fonts/SchnyderMLight.woff2",
   display: "swap",
 });
+
+export const canela = localFont({
+  src: "../fonts/Canela-Medium-Trial.woff2",
+  display: "swap",
+});

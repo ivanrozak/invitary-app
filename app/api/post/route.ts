@@ -1,32 +1,34 @@
 import { NextResponse } from "next/server";
-import { allPost, createPost } from "@/prisma/post";
+import { prisma } from "@/lib/prismadb";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { title } = body;
+  const { title, id, description } = body;
 
   if (!title) {
     return new NextResponse("Missing Fields", { status: 400 });
   }
 
-  // const exist = await prisma.user.findUnique({
-  //   where: {
-  //     title,
-  //   },
-  // });
+  let post;
 
-  // if (exist) {
-  //   throw new Error("Email already exists");
-  // } else {
-  //   console.log("not exist");
-  // }
-
-  // const post = await createPost({ title });
-  const post = await allPost();
+  if (id) {
+    post = await prisma.post.update({
+      where: {
+        id,
+      },
+      data: {
+        title,
+        description,
+      },
+    });
+  } else {
+    post = await prisma.post.create({
+      data: {
+        title,
+        description,
+      },
+    });
+  }
 
   return NextResponse.json(post);
-}
-
-export async function GET(req: Request) {
-  // const
 }

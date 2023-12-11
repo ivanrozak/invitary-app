@@ -8,6 +8,18 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "london.bridestory.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "alexandra.bridestory.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

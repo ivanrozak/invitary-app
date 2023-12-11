@@ -2,7 +2,7 @@
 import React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { I18nProviderClient, useCurrentLocale } from "@/locales/client";
-import ThemeProvider from "@/components/Home/ThemeProvider";
+import ThemeProvider from "@/components/ThemeProvider";
 
 export interface ProvidersProps {
   children: React.ReactNode;
