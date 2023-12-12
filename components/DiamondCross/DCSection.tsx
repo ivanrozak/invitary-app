@@ -67,7 +67,7 @@ const DCSection = ({
           )}
         >
           <Image
-            src={imgUrl || "/animated-slider/1.png"}
+            src={imgUrl || "/animated-slider/1.jpg"}
             fill
             className="object-cover object-bottom"
             style={{ scale: y }}

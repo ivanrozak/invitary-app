@@ -1,11 +1,13 @@
-import SlideShow from "@/components/SlideShow";
+import Content from "@/components/One/Content";
+import Opener from "@/components/One/Opener";
+// import SlideShow from "@/components/SlideShow";
 import React from "react";
 
 const TemplateOne = () => {
   return (
     <div>
-      <SlideShow />
-      <div>footer</div>
+      {/* <Opener /> */}
+      <Content />
     </div>
   );
 };

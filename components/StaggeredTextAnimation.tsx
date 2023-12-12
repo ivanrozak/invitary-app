@@ -12,7 +12,7 @@ const StaggeredTextAnimation = ({
     <motion.div
       initial="hidden"
       animate="show"
-      viewport={{ once: true }}
+      viewport={{ once: false }}
       variants={{
         hidden: {},
         show: {

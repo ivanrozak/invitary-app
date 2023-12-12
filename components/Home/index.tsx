@@ -6,37 +6,37 @@ const Home = () => {
   const themeList = [
     {
       name: "Theme One",
-      imgSrc: "/animated-slider/1.png",
+      imgSrc: "/animated-slider/1.jpg",
       link: "/marry-monday",
     },
     {
       name: "Theme Two",
-      imgSrc: "/animated-slider/2.png",
+      imgSrc: "/animated-slider/2.jpg",
       link: "/diamond-cross",
     },
     {
       name: "Theme Three",
-      imgSrc: "/animated-slider/3.png",
+      imgSrc: "/animated-slider/3.jpg",
       link: "#",
     },
     {
       name: "Theme Four",
-      imgSrc: "/animated-slider/4.png",
+      imgSrc: "/animated-slider/4.jpg",
       link: "#",
     },
     {
       name: "Theme Five",
-      imgSrc: "/animated-slider/5.png",
+      imgSrc: "/animated-slider/5.jpg",
       link: "#",
     },
     {
       name: "Theme Six",
-      imgSrc: "/animated-slider/6.png",
+      imgSrc: "/animated-slider/6.jpg",
       link: "#",
     },
     {
       name: "Theme Seven",
-      imgSrc: "/animated-slider/7.png",
+      imgSrc: "/animated-slider/7.jpg",
       link: "#",
     },
   ];
