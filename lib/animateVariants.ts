@@ -13,7 +13,7 @@ const SHOW_UP_ANIMATION_VARIANT = {
     y: "100%",
     transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
   },
-  visible: {
+  show: {
     y: 0,
     transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
   },

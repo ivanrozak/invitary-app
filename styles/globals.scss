@@ -115,9 +115,9 @@ body {
 }
 
 .snap-parent {
-  @apply h-[100svh] snap-y snap-mandatory overflow-scroll;
+  @apply h-[100svh] w-full snap-y snap-mandatory overflow-scroll;
 }
 
 .snap-child {
-  @apply h-[100svh] snap-center snap-always;
+  @apply h-[100svh] w-full snap-center snap-always;
 }

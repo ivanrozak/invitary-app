@@ -17,6 +17,9 @@ const config: Config = {
       colors: {
         warning: "white",
       },
+      height: {
+        screen: "100svh",
+      },
     },
   },
   darkMode: "class",
