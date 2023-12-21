@@ -1,6 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion, scroll } from "framer-motion";
+import {
+  motion,
+  scroll,
+  LazyMotion,
+  domAnimation,
+  AnimatePresence,
+} from "framer-motion";
 import useIsMount from "@/hooks/useIsMount";
 
 const PageOne = () => {
@@ -12,6 +18,7 @@ const PageOne = () => {
           initial={{ y: 50 }}
           animate={{ y: 0 }}
           exit={{}}
+          whileInView="animate"
           transition={{ type: "spring", duration: 0.5 }}
         >
           Hello World!
@@ -43,9 +50,13 @@ const PageTwo = () => {
 const TemplateOne = () => {
   return (
     <div>
-      <PageOne />
-      <PageTwo />
-      <PageOne />
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence>
+          <PageOne />
+          <PageOne />
+          {/* <PageTwo /> */}
+        </AnimatePresence>
+      </LazyMotion>
     </div>
   );
 };
