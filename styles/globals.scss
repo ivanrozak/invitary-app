@@ -108,3 +108,16 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 30px;
 }
+
+.fullscreen {
+  width: 100%;
+  height: 100svh;
+}
+
+.snap-parent {
+  @apply h-[100svh] w-full snap-y snap-mandatory overflow-scroll;
+}
+
+.snap-child {
+  @apply h-[100svh] w-full snap-center snap-always;
+}

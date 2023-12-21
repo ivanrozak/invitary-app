@@ -16,7 +16,7 @@ const DCImage = () => {
         style={{ scaleX: scrollYProgress }}
       >
         <Image
-          src="/animated-slider/2.png"
+          src="/animated-slider/2.jpg"
           fill
           className="object-cover object-center"
           alt="alt"

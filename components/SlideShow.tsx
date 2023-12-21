@@ -9,12 +9,12 @@ import "react-slideshow-image/dist/styles.css";
 
 const SlideShow = () => {
   const imageList = [
-    "/animated-slider/1.png",
-    "/animated-slider/2.png",
-    "/animated-slider/3.png",
-    "/animated-slider/4.png",
-    "/animated-slider/5.png",
-    "/animated-slider/6.png",
+    "/animated-slider/1.jpg",
+    "/animated-slider/2.jpg",
+    "/animated-slider/3.jpg",
+    "/animated-slider/4.jpg",
+    "/animated-slider/5.jpg",
+    "/animated-slider/6.jpg",
   ];
 
   const isMounted = useIsMount();

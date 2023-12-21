@@ -14,6 +14,12 @@ const config: Config = {
         arimo: ["var(--font-arimo)"],
         cormorant: ["var(--font-cormorant)"],
       },
+      colors: {
+        warning: "white",
+      },
+      height: {
+        screen: "100svh",
+      },
     },
   },
   darkMode: "class",

@@ -77,35 +77,35 @@ export default function AnimatedSlider() {
 
 const sliderData = [
   {
-    img: "/animated-slider/1.png",
+    img: "/animated-slider/1.jpg",
     location: "Switzrerland Apls",
     description:
       "The journey to Machu Picchu typically starts in the mountain city of Cusco, which was the capital city of the Inca Empire",
     title: "SAINT ANTÖNEN",
   },
   {
-    img: "/animated-slider/2.png",
+    img: "/animated-slider/2.jpg",
     title: "The Grand Canyon",
     description:
       "The earth's geological history opens before your eyes in a mile-deep chasm",
     location: "Arizona",
   },
   {
-    img: "/animated-slider/3.png",
+    img: "/animated-slider/3.jpg",
     title: "Masai Mara",
     description:
       "Wild animals in their natural environment, luxury safari lodges",
     location: "Kenya",
   },
   {
-    img: "/animated-slider/4.png",
+    img: "/animated-slider/4.jpg",
     title: "Angkor Wat",
     description:
       "A stunning ancient jungle city with hundreds of intricately constructed temples",
     location: "Cambodia",
   },
   {
-    img: "/animated-slider/7.png",
+    img: "/animated-slider/7.jpg",
     title: "Bali",
     description:
       "Tropical beaches, volcano hikes, ancient temples, and friendly people",

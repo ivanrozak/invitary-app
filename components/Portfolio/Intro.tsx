@@ -15,7 +15,7 @@ const Intro = () => {
           transition={{ ease: "easeIn", duration: 2 }}
         >
           <Image
-            src="/animated-slider/1.png"
+            src="/animated-slider/1.jpg"
             className="w-fit h-full object-cover object-center"
             fill
             alt="asd"
