@@ -26,11 +26,11 @@ const Comments = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: "test",
-        content: "test",
-        confirmation: "NO",
+        name,
+        content,
+        confirmation,
         userId: "656fd880b2d14968a9df7bf7",
-        totalGuest: 2,
+        totalGuest,
       }),
     });
     const data = await res.json();
