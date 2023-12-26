@@ -1,5 +1,11 @@
 "use client";
-import { useRef } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import { LazyMotion, domAnimation, useInView, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import {
@@ -12,7 +18,12 @@ import {
 import Image from "next/image";
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { DoubleChevronUp, InstagramIcon } from "@/components/icons";
+import {
+  DoubleChevronUp,
+  InstagramIcon,
+  SpeakerMuted,
+  SpeakerUnmuted,
+} from "@/components/icons";
 
 function Section({ children }: { children: React.ReactNode }) {
   const ref = useRef(null);
@@ -257,7 +268,7 @@ const SectionOne = () => {
   );
 };
 
-const Opener = () => {
+const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure();
   const imgUrl =
     "https://alexandra.bridestory.com/images/dpr_1.0,f_auto,fl_progressive,q_80,c_fill,g_faces,w_1200/blogs/11--0lgyiGwt/pemotretan-pre-wedding-berlatar-alam-bali-yang-menenangkan-1.jpg";
@@ -324,7 +335,10 @@ const Opener = () => {
                   variant="bordered"
                   radius="none"
                   className="text-white font-light tracking-wider"
-                  onPress={onClose}
+                  onPress={() => {
+                    onClose();
+                    playAudio();
+                  }}
                 >
                   OPEN INVITATION
                 </Button>
@@ -337,14 +351,81 @@ const Opener = () => {
   );
 };
 
+const AudioSection = forwardRef((props, ref) => {
+  const audioUrl =
+    "https://groovepublic.com/wp-content/uploads/2023/10/y2mate.com-Sod-Ven-In-My-Imagination-Official-Video.mp3";
+
+  const [audioLoaded, setAudioLoaded] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
+  useEffect(() => {
+    const audioElement = document.getElementById("myAudio") as HTMLAudioElement;
+
+    const handleCanPlayThrough = () => {
+      setAudioLoaded(true);
+    };
+
+    audioElement.addEventListener("canplaythrough", handleCanPlayThrough);
+
+    return () => {
+      audioElement.removeEventListener("canplaythrough", handleCanPlayThrough);
+    };
+  }, []);
+
+  const pauseAudio = () => {
+    const audioElement = document.getElementById("myAudio") as HTMLAudioElement;
+    audioElement.pause();
+    setAudioPlaying(false);
+  };
+
+  const playAudio = () => {
+    const audioElement = document.getElementById("myAudio") as HTMLAudioElement;
+    audioElement.play();
+    setAudioPlaying(true);
+  };
+
+  useImperativeHandle(ref, () => ({
+    playAudio,
+  }));
+
+  return (
+    <>
+      <audio id="myAudio" className="hidden" preload="auto">
+        <source src={audioUrl} type="audio/mp3" />
+        Your browser does not support the audio tag.
+      </audio>
+      {audioLoaded && (
+        <div className="fixed z-10 bottom-5 right-5">
+          <Button
+            isIconOnly
+            className="bg-white/40 text-black/60"
+            radius="full"
+            size="sm"
+            onClick={audioPlaying ? pauseAudio : playAudio}
+          >
+            {audioPlaying ? <SpeakerUnmuted /> : <SpeakerMuted />}
+          </Button>
+        </div>
+      )}
+    </>
+  );
+});
+
+AudioSection.displayName = "AudioSection";
+
 export default function TemplateThree() {
   const { setTheme } = useTheme();
   setTheme("light");
-
+  const audioRef = useRef(null);
+  const playAudio = () => {
+    // @ts-ignore
+    audioRef.current?.playAudio();
+  };
   return (
     <div className="snap-parent">
-      <Opener />
+      <Opener playAudio={playAudio} />
       <LazyMotion features={domAnimation}>
+        <AudioSection ref={audioRef} />
         <HeroPage />
         <GroomSection />
         <BrideSection />
