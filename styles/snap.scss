@@ -1,0 +1,11 @@
+html {
+  @apply h-screen snap-y snap-mandatory overflow-y-scroll;
+}
+
+// .snap-parent {
+//   @apply h-[100svh] w-full snap-y snap-mandatory overflow-y-scroll;
+// }
+
+.snap-child {
+  @apply h-screen w-full snap-start snap-always;
+}

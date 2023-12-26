@@ -18,7 +18,7 @@ const config: Config = {
         warning: "white",
       },
       height: {
-        screen: "100svh",
+        screen: "100vh",
       },
     },
   },

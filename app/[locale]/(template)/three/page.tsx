@@ -1,4 +1,5 @@
 "use client";
+import "@/styles/snap.scss";
 import {
   forwardRef,
   useEffect,
@@ -78,7 +79,7 @@ const HeroPage = () => {
             who is alone when he falls and has not another to lift him up!
             Again, if two lie together, they keep warm.
           </p>
-          <div className="mt-16 animate-bounce">
+          <div className="mt-8 mb-12 animate-bounce">
             <div className="mx-auto w-fit mb-3">
               <DoubleChevronUp />
             </div>
@@ -367,6 +368,16 @@ const AudioSection = forwardRef((props, ref) => {
     };
 
     audioElement.addEventListener("canplaythrough", handleCanPlayThrough);
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        // Page is not visible (tab switched or window minimized)
+        pauseAudio();
+      } else {
+        // Page is visible (tab gained focus)
+        playAudio();
+      }
+    });
 
     return () => {
       audioElement.removeEventListener("canplaythrough", handleCanPlayThrough);
