@@ -24,6 +24,7 @@ import {
   SpeakerMuted,
   SpeakerUnmuted,
 } from "@/components/icons";
+import Comments from "@/components/Comments";
 
 function Section({ children }: { children: React.ReactNode }) {
   const ref = useRef(null);
@@ -390,7 +391,12 @@ const AudioSection = forwardRef((props, ref) => {
 
   return (
     <>
-      <audio id="myAudio" className="hidden" preload="auto">
+      <audio
+        id="myAudio"
+        className="hidden"
+        preload="auto"
+        onEnded={pauseAudio}
+      >
         <source src={audioUrl} type="audio/mp3" />
         Your browser does not support the audio tag.
       </audio>
@@ -430,7 +436,9 @@ export default function TemplateThree() {
         <GroomSection />
         <BrideSection />
         <SectionOne />
-        <Section>End Section!</Section>
+        <Section>
+          <Comments />
+        </Section>
       </LazyMotion>
     </div>
   );
