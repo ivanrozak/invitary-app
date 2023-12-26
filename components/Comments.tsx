@@ -30,7 +30,7 @@ const Comments = () => {
         content,
         confirmation,
         userId: "656fd880b2d14968a9df7bf7",
-        totalGuest,
+        totalGuest: parseInt(totalGuest),
       }),
     });
     const data = await res.json();
