@@ -1,64 +1,8 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import {
-  motion,
-  scroll,
-  LazyMotion,
-  domAnimation,
-  AnimatePresence,
-} from "framer-motion";
-import useIsMount from "@/hooks/useIsMount";
+import LightBox from "@/components/LightBox";
+import React from "react";
 
 const PageOne = () => {
-  return (
-    <div className="fullscreen p-8 flex justify-center items-center">
-      <div className="overflow-hidden">
-        <motion.div
-          className="text-3xl font-bold"
-          initial={{ y: 50 }}
-          animate={{ y: 0 }}
-          exit={{}}
-          whileInView="animate"
-          transition={{ type: "spring", duration: 0.5 }}
-        >
-          Hello World!
-        </motion.div>
-      </div>
-    </div>
-  );
+  return <LightBox />;
 };
 
-const PageTwo = () => {
-  const [position, setPosition] = useState(0);
-  useEffect(() => {
-    const page2 = document.getElementById("page2") as HTMLElement;
-    scroll(
-      (progress) => {
-        console.log("progress: ", progress, page2);
-        setPosition(progress);
-      },
-      { source: page2, axis: "y" }
-    );
-  }, []);
-  return (
-    <div id="page2" className="h-[200svh] p-8 flex items-center justify-center">
-      <div>Page 2 {position}</div>
-    </div>
-  );
-};
-
-const TemplateOne = () => {
-  return (
-    <div>
-      <LazyMotion features={domAnimation}>
-        <AnimatePresence>
-          <PageOne />
-          <PageOne />
-          {/* <PageTwo /> */}
-        </AnimatePresence>
-      </LazyMotion>
-    </div>
-  );
-};
-
-export default TemplateOne;
+export default PageOne;
