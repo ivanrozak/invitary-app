@@ -40,3 +40,8 @@ export const canela = localFont({
   src: "../fonts/Canela-Medium-Trial.woff2",
   display: "swap",
 });
+
+export const ivy = localFont({
+  src: "../fonts/ivy-mode-4.woff2",
+  display: "swap",
+});
