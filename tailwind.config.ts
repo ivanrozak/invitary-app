@@ -16,6 +16,7 @@ const config: Config = {
       },
       colors: {
         warning: "white",
+        landingPrimary: "#434C26",
       },
       height: {
         screen: "100vh",

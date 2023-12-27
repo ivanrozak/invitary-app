@@ -1,5 +1,12 @@
 "use client";
-import { Button, Input, Select, SelectItem, Textarea } from "@nextui-org/react";
+import {
+  Button,
+  Input,
+  ScrollShadow,
+  Select,
+  SelectItem,
+  Textarea,
+} from "@nextui-org/react";
 import React, { useState } from "react";
 
 const Comments = () => {
@@ -110,7 +117,7 @@ const Comments = () => {
           Kirim
         </Button>
       </div>
-      <div className="mt-5 flex flex-col gap-2">
+      <ScrollShadow className="mt-5 flex flex-col gap-2 max-h-[40vh] overflow-y-auto pb-8">
         {comments.map((comment: any) => {
           return (
             <div key={comment.id} className="bg-black/10">
@@ -120,7 +127,7 @@ const Comments = () => {
             </div>
           );
         })}
-      </div>
+      </ScrollShadow>
     </div>
   );
 };
