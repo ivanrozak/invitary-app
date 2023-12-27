@@ -9,64 +9,49 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
-import { Button } from "@nextui-org/button";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@nextui-org/skeleton";
-const ThemeSwitcher = dynamic(() => import("../ThemeSwitcher"), {
-  loading: () => <Skeleton className="w-[60px] h-[32px] rounded-full" />,
-});
+import LangSwitcher from "./LangSwitcher";
+import Image from "next/image";
 
 export default function BaseNavbar() {
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+  const menuItems = ["Home", "Templates", "Contact", "Pricing"];
 
   return (
-    <Navbar maxWidth="xl" shouldHideOnScroll>
+    <Navbar
+      maxWidth="xl"
+      shouldHideOnScroll
+      classNames={{
+        base: "backdrop-blur-none bg-gradient-to-b from-white to-white/0 text-landingPrimary",
+        content: "text-landingPrimary",
+      }}
+    >
       <NavbarContent>
         <NavbarMenuToggle className="sm:hidden" />
         <NavbarBrand>
-          {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">INVITARY</p>
+          <Image
+            src="/static/main_brand.png"
+            width={100}
+            height={100}
+            alt="INVITARY"
+          />
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
+          <Link href="#">Home</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
+          <Link href="#">Templates</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#">Contact</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#">Pricing</Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <ThemeSwitcher />
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
+        <LangSwitcher />
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
