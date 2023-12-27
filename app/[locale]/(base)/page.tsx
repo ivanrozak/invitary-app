@@ -1,3 +1,4 @@
+import CardTemplate from "@/components/Home/CardTemplate";
 import { BrandLogo } from "@/components/icons";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import React from "react";
 const HomePage = () => {
   return (
     <>
-      <div className="-mt-[4rem] w-full bg-[url('/static/bg_pattern.svg')] bg-cover bg-center bg-no-repeat pt-32 text-landingPrimary">
+      <div className="-mt-[4rem] w-full bg-[url('/static/bg_pattern.svg')] bg-cover bg-center-top bg-no-repeat pt-32 pb-16 text-landingPrimary">
         <div className="bg-[#FFF3C1] rounded-full w-16 h-16 flex items-center justify-center mx-auto">
           <BrandLogo />
         </div>
@@ -47,6 +48,29 @@ const HomePage = () => {
             <Button className="bg-landingPrimary text-white" radius="sm">
               Start Crafting Your Invitations Now!
             </Button>
+          </div>
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto bg-[#FFFAE8] p-12 rounded-2xl">
+        <div className="flex justify-between">
+          <div>
+            <p className="font-semibold text-landingPrimary">Our Templates</p>
+            <h2 className="font-semibold text-4xl mt-3">Latest Templates</h2>
+            <p className="text-xl text-[#475467] mt-2">
+              Discover Timeless Elegance: Explore Our Newest Wedding Invitation
+              Templates!
+            </p>
+          </div>
+          <Button className="bg-landingPrimary text-white" radius="sm">
+            View all templates
+          </Button>
+        </div>
+        <div className="-mr-12 mt-12">
+          <div className="flex space-x-4 overflow-x-auto">
+            <CardTemplate />
+            <CardTemplate />
+            <CardTemplate />
+            <CardTemplate />
           </div>
         </div>
       </div>
