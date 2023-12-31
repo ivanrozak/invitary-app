@@ -3,12 +3,19 @@ import {
   Roboto_Mono,
   Arimo,
   Cormorant_Garamond,
+  Laila,
 } from "next/font/google";
 import localFont from "next/font/local";
 
 export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+export const laila = Laila({
+  weight: ["500", "700"],
+  subsets: ["latin"],
   display: "swap",
 });
 
