@@ -52,3 +52,8 @@ export const ivy = localFont({
   src: "../fonts/ivy-mode-4.woff2",
   display: "swap",
 });
+
+export const analogue = localFont({
+  src: "../fonts/Analogue.woff",
+  display: "swap",
+});

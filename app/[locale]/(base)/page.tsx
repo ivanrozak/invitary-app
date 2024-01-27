@@ -2,7 +2,7 @@ import CardStyled from "@/components/Home/CardStyled";
 import { BrandLogo } from "@/components/icons";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
-import React from "react";
+import React, { CSSProperties } from "react";
 
 const HomePage = () => {
   return (
@@ -11,7 +11,10 @@ const HomePage = () => {
         <div className="bg-[#FFF3C1] rounded-full w-16 h-16 flex items-center justify-center mx-auto">
           <BrandLogo />
         </div>
-        <div className="text-center flex flex-col justify-center items-center mt-8 relative">
+        <div
+          className="text-center flex flex-col justify-center items-center mt-8 relative animate-in"
+          style={{ "--index": 1 } as CSSProperties}
+        >
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl mb-4 font-bold relative">
             Sparkling Smiles, Spreading
             <div className="absolute left-[-205px] top-5">
