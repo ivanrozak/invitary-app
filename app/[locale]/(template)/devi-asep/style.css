@@ -13,3 +13,11 @@
 .after\:bg-primary::after {
   --tw-bg-opacity: 0.4 !important;
 }
+
+.circle-svg {
+  fill: currentColor;
+  height: auto;
+  max-width: 66vmin;
+  transform-origin: center;
+  width: 66%;
+}
