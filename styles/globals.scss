@@ -34,6 +34,12 @@ body {
 .animate-fade-in-up {
   animation-delay: calc(var(--index) * 130ms);
 }
+.animate-fade-in-left {
+  animation-delay: calc(var(--index) * 130ms);
+}
+.animate-fade-in-right {
+  animation-delay: calc(var(--index) * 130ms);
+}
 
 .bg-pattern-dotted {
   background-color: #e5e5f7;

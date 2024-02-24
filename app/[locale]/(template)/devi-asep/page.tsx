@@ -1,6 +1,7 @@
 'use client'
 import '@/styles/snap.scss'
 import {
+  CSSProperties,
   forwardRef,
   useEffect,
   useImperativeHandle,
@@ -211,14 +212,27 @@ const HeroPage = () => {
 }
 
 const CoupleSection = () => {
+  const ref1 = useRef(null)
+  const isInView1 = useInView(ref1, { once: true })
+
+  const ref2 = useRef(null)
+  const isInView2 = useInView(ref2, { once: true })
+
+  const ref3 = useRef(null)
+  const isInView3 = useInView(ref3, { once: true })
+
   return (
     <div className="w-full cbg-primary text-white/70 min-h-screen py-24">
       <div className="absolute w-full h-[1px] mt-36 border-b border-white/50 my-auto" />
       <div className="relative aspect-[260/290] w-[60%]">
         <Image
+          ref={ref1}
           src="/asep/IMG_20240130_203158.jpg"
           fill
-          className="object-center object-cover"
+          className={cn('object-center object-cover', {
+            'animate-fade-in-left': isInView1,
+          })}
+          style={{ '--index': 1 } as CSSProperties}
           alt="asep"
         />
         <div className="absolute z-10 -top-8 -right-20">
@@ -238,7 +252,7 @@ const CoupleSection = () => {
             a 37,37 0 1,1 -74,0"
               />
             </defs>
-            <text font-size="18">
+            <text fontSize="18">
               <textPath xlinkHref="#circle">ASEP H - THE GROOM</textPath>
             </text>
           </svg>
@@ -281,9 +295,13 @@ const CoupleSection = () => {
         </div>
         <div className="relative aspect-[220/213] w-[50%] ml-auto">
           <Image
+            ref={ref2}
             src="/asep/IMG_20240130_203158.jpg"
             fill
-            className="object-center object-cover"
+            className={cn('object-center object-cover', {
+              'animate-fade-in-right': isInView2,
+            })}
+            style={{ '--index': 1 } as CSSProperties}
             alt="oke"
           />
         </div>
@@ -296,11 +314,14 @@ const CoupleSection = () => {
         >
           The bride
         </div>
-        <div className="relative aspect-video w-[90%] mx-auto">
+        <div ref={ref3} className="relative aspect-video w-[90%] mx-auto">
           <Image
             src="/asep/IMG_20240130_203158.jpg"
             fill
-            className="object-center object-cover"
+            className={cn('object-center object-cover', {
+              'animate-zoom-in': isInView3,
+            })}
+            style={{ '--index': 1 } as CSSProperties}
             alt="asep"
           />
         </div>
