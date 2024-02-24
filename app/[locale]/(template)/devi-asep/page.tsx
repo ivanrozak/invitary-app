@@ -559,6 +559,85 @@ const RsvpSection = () => {
   )
 }
 
+const GiftSection = () => {
+  return (
+    <div className="cbg-secondary text-white/80 px-8 pt-24 pb-16">
+      <div className="grid grid-cols-2 gap-3">
+        <div className="pt-12">
+          <div className="relative aspect-[177/217]">
+            <Image
+              src="/asep/IMG_20240130_203158.jpg"
+              fill
+              className="object-center object-cover"
+              alt="asep"
+            />
+          </div>
+        </div>
+        <div>
+          <div className="relative aspect-[157/173]">
+            <Image
+              src="/asep/IMG_20240130_203158.jpg"
+              fill
+              className="object-center object-cover"
+              alt="asep"
+            />
+          </div>
+          <div
+            className={cn(ivy.className, {
+              'tracking-wide text-2xl mt-4': true,
+            })}
+          >
+            Love Gift
+          </div>
+        </div>
+      </div>
+      <p className="text-xs font-light text-center mt-4 px-4">
+        We also plan to publish our marriage virtually via the Youtube platform
+        which you can follow via the following link
+      </p>
+      <div
+        className={cn(ivy.className, {
+          'tracking-wide mt-8 text-center': true,
+        })}
+      >
+        CLICK HERE
+      </div>
+    </div>
+  )
+}
+
+const GallerySection = () => {
+  return <div>Section Gallery</div>
+}
+
+const ThankyouSection = () => {
+  return (
+    <div className="cbg-secondary text-white/80 text-center px-8 pt-20 pb-16">
+      <div
+        className={cn(ivy.className, {
+          'tracking-wide text-3xl mt-4': true,
+        })}
+      >
+        Thank You!
+      </div>
+      <p className="text-xs font-light mt-8 leading-5">
+        Thank you for your kind words, prayers, and willingness to come in our
+        wedding celebration. We wish your understanding for all health protocols
+        restriction. <br />
+        See you on our wedding day !
+      </p>
+      <div
+        className={cn(ivy.className, {
+          'tracking-wide text-xl mt-32': true,
+        })}
+      >
+        Powered by
+      </div>
+      <p className="font-light text-xs mt-4">invitary.com</p>
+    </div>
+  )
+}
+
 const LeftHeroFixed = () => {
   const imgUrl =
     'https://groovepublic.com/wp-content/uploads/2023/10/blog-olive7.jpg'
@@ -698,6 +777,9 @@ export default function AsepPage() {
         <EventSection />
         <LiveStream />
         <RsvpSection />
+        <GiftSection />
+        <GallerySection />
+        <ThankyouSection />
       </div>
     </div>
   )
