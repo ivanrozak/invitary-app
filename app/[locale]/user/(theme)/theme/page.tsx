@@ -1,4 +1,7 @@
 'use client'
+
+import Iframe from '@/components/Theme/Iframe'
+import TestingComponent from '@/components/Theme/TestingComponent'
 import {
   BookIcon,
   CoupleIcon,
@@ -16,6 +19,7 @@ import {
 } from '@/components/icons'
 import {
   Button,
+  Input,
   Link,
   Navbar,
   NavbarContent,
@@ -23,7 +27,7 @@ import {
   Switch,
   cn,
 } from '@nextui-org/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ButtonNavbar = ({
   title,
@@ -51,6 +55,26 @@ const ButtonNavbar = ({
       {icon}
       <div className="text-[10px] font-semibold">{title}</div>
     </Button>
+  )
+}
+
+const OpenerField = () => {
+  const [groom, setGroom] = useState('')
+  const [bride, setBride] = useState('')
+
+  return (
+    <div className="flex flex-col gap-4">
+      <Input
+        label="Groom"
+        value={groom}
+        onChange={(e) => setGroom(e.target.value)}
+      />
+      <Input
+        label="Bride"
+        value={bride}
+        onChange={(e) => setBride(e.target.value)}
+      />
+    </div>
   )
 }
 
@@ -139,7 +163,7 @@ const ThemePage = () => {
         <div className="flex justify-between items-center text-xs h-8">
           {section}
         </div>
-        <div>content here...</div>
+        {section === 'Opener' && <OpenerField />}
       </div>
       <div className="bg-pattern-dotted flex-1 relative">
         <Navbar
@@ -177,13 +201,16 @@ const ThemePage = () => {
             className={cn(
               'transition-all relative mx-auto rounded-md overflow-hidden bg-gray-300',
               {
-                'aspect-video w-[80%]': !isMobile,
+                'aspect-video w-full': !isMobile,
                 'aspect-[260/490] w-[360px]': isMobile,
               },
             )}
           >
-            <iframe
-              key={iframeKey}
+            {/* <TestingComponent /> */}
+            <Iframe iframeKey={iframeKey} src="http://localhost:3002/asep" />
+            {/* <Iframe iframeKey={iframeKey} src="https://invitary.com/one" /> */}
+            {/* <iframe
+              // key={iframeKey}
               title="Embedded Content"
               src="http://localhost:3002/asep"
               style={{
@@ -194,7 +221,7 @@ const ThemePage = () => {
                 height: '100%',
               }}
               allowFullScreen
-            />
+            /> */}
           </div>
         </div>
       </div>

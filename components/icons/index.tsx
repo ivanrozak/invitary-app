@@ -314,7 +314,7 @@ export const InvitaryIcon = (props: any) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_322_70264)">
+    <g clipPath="url(#clip0_322_70264)">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -1,0 +1,15 @@
+.cbg-primary {
+  background-color: #4f4e48;
+}
+
+.cbg-secondary {
+  background-color: #75746e;
+}
+
+.cbg-tertiary {
+  background-color: #797060;
+}
+
+.after\:bg-primary::after {
+  --tw-bg-opacity: 0.4 !important;
+}
