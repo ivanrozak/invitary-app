@@ -1,6 +1,7 @@
 'use client'
 import '@/styles/snap.scss'
 import {
+  CSSProperties,
   forwardRef,
   useEffect,
   useImperativeHandle,
@@ -37,11 +38,9 @@ import {
   SpeakerMuted,
   SpeakerUnmuted,
 } from '@/components/icons'
-import Comments from '@/components/Comments'
 import { analogue, anglezScript, gothic, ivy } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import './style.css'
-import { label } from 'yet-another-react-lightbox'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
@@ -213,15 +212,51 @@ const HeroPage = () => {
 }
 
 const CoupleSection = () => {
+  const ref1 = useRef(null)
+  const isInView1 = useInView(ref1, { once: true })
+
+  const ref2 = useRef(null)
+  const isInView2 = useInView(ref2, { once: true })
+
+  const ref3 = useRef(null)
+  const isInView3 = useInView(ref3, { once: true })
+
   return (
     <div className="w-full cbg-primary text-white/70 min-h-screen py-24">
+      <div className="absolute w-full h-[1px] mt-36 border-b border-white/50 my-auto" />
       <div className="relative aspect-[260/290] w-[60%]">
         <Image
+          ref={ref1}
           src="/asep/IMG_20240130_203158.jpg"
           fill
-          className="object-center object-cover"
+          className={cn('object-center object-cover', {
+            'animate-fade-in-left': isInView1,
+          })}
+          style={{ '--index': 1 } as CSSProperties}
           alt="asep"
         />
+        <div className="absolute z-10 -top-8 -right-20">
+          <svg
+            viewBox="0 0 100 100"
+            width="100"
+            height="100"
+            className="circle-svg"
+          >
+            <defs>
+              <path
+                id="circle"
+                d="
+            M 50, 50
+            m -37, 0
+            a 37,37 0 1,1 74,0
+            a 37,37 0 1,1 -74,0"
+              />
+            </defs>
+            <text fontSize="18">
+              <textPath xlinkHref="#circle">ASEP H - THE GROOM</textPath>
+            </text>
+          </svg>
+        </div>
       </div>
       <div className="p-6 mt-16">
         <div
@@ -260,9 +295,13 @@ const CoupleSection = () => {
         </div>
         <div className="relative aspect-[220/213] w-[50%] ml-auto">
           <Image
+            ref={ref2}
             src="/asep/IMG_20240130_203158.jpg"
             fill
-            className="object-center object-cover"
+            className={cn('object-center object-cover', {
+              'animate-fade-in-right': isInView2,
+            })}
+            style={{ '--index': 1 } as CSSProperties}
             alt="oke"
           />
         </div>
@@ -275,11 +314,14 @@ const CoupleSection = () => {
         >
           The bride
         </div>
-        <div className="relative aspect-video w-[90%] mx-auto">
+        <div ref={ref3} className="relative aspect-video w-[90%] mx-auto">
           <Image
             src="/asep/IMG_20240130_203158.jpg"
             fill
-            className="object-center object-cover"
+            className={cn('object-center object-cover', {
+              'animate-zoom-in': isInView3,
+            })}
+            style={{ '--index': 1 } as CSSProperties}
             alt="asep"
           />
         </div>
@@ -377,6 +419,7 @@ const LoveStory = () => {
 const EventSection = () => {
   return (
     <div className="w-full cbg-primary text-white/70 py-12 px-10">
+      <div className="absolute w-full h-[1px] mt-32 border-b border-white/50 -mx-10" />
       <div>
         <div className="relative aspect-[335/223]">
           <Image
@@ -463,7 +506,9 @@ const EventSection = () => {
 
 const LiveStream = () => {
   return (
-    <div className="cbg-secondary text-white/80 text-center px-8 min-h-[60vh] py-24"></div>
+    <div className="cbg-secondary text-white/80 text-center px-8 min-h-[60vh] py-24 flex flex-col items-center justify-center">
+      <div className="text-sm font-light">belum tau diisi apa</div>
+    </div>
   )
 }
 
@@ -492,6 +537,18 @@ const RsvpSection = () => {
   return (
     <div className="w-full cbg-primary text-white/70 py-16">
       <div className="relative ml-auto aspect-[374/320] w-[90%]">
+        <div
+          className={cn(ivy.className, {
+            'absolute top-0 left-0 z-10 cbg-primary tracking-wide text-3xl font-bold pr-4 pb-3':
+              true,
+          })}
+        >
+          RSVP
+        </div>
+        <div className="absolute z-10 cbg-primary bottom-[-14px] right-0 text-xs font-light w-[60%] px-3 pt-2">
+          Your presence shall be a great honour for us and our families. Please
+          confirm your attendance through reservation form below
+        </div>
         <Image
           src="/asep/IMG_20240130_203158.jpg"
           fill
@@ -607,7 +664,33 @@ const GiftSection = () => {
 }
 
 const GallerySection = () => {
-  return <div>Section Gallery</div>
+  const photos = [
+    '/asep/IMG_8868.jpg',
+    '/asep/IMG_20240203_114054.jpg',
+    '/asep/IMG_20240203_152323.jpg',
+    '/asep/IMG_20240130_105642.jpg',
+  ]
+
+  const aspect = [
+    'aspect-[413/313]',
+    'aspect-[413/313]',
+    'aspect-[414/276]',
+    'aspect-[414/373]',
+  ]
+  return (
+    <div>
+      {photos.map((photo, idx) => (
+        <div key={idx} className={'relative ' + aspect[idx]}>
+          <Image
+            src={photo}
+            fill
+            className="object-center object-cover"
+            alt="gallery"
+          />
+        </div>
+      ))}
+    </div>
+  )
 }
 
 const ThankyouSection = () => {
