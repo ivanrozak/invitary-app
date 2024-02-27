@@ -1,4 +1,16 @@
 .cbg-primary {
+  background-color: #212529;
+}
+
+.cbg-secondary {
+  background-color: #495057;
+}
+
+.cbg-tertiary {
+  background-color: #415a77;
+}
+
+/* .cbg-primary {
   background-color: #4f4e48;
 }
 
@@ -8,7 +20,7 @@
 
 .cbg-tertiary {
   background-color: #797060;
-}
+} */
 
 .after\:bg-primary::after {
   --tw-bg-opacity: 0.4 !important;
