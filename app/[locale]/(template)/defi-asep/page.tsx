@@ -39,12 +39,14 @@ import {
 import { analogue, gothic, ivy } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import './style.css'
+import { useSearchParams } from 'next/navigation'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
   const imgUrl = '/asep/IMG_20240130_200324.jpg'
 
-  const user = ''
+  const searchParams = useSearchParams()
+  const user = searchParams.get('u')
   return (
     <Modal
       isOpen={!isOpen}
@@ -105,7 +107,9 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                   <p className="text-sm font-light uppercase">
                     Special invitation:
                   </p>
-                  <p className="text-xl font-bold py-4">Nama Tamu</p>
+                  <p className="text-xl font-semibold py-4">
+                    {user || 'Nama Tamu'}
+                  </p>
                   <p className="text-[10px] font-light">
                     We apologize for any inaccuracies in the spelling of names
                     and titles
