@@ -43,6 +43,8 @@ import './style.css'
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
   const imgUrl = '/asep/IMG_20240130_200324.jpg'
+
+  const user = ''
   return (
     <Modal
       isOpen={!isOpen}
@@ -105,8 +107,8 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                   </p>
                   <p className="text-xl font-bold py-4">Nama Tamu</p>
                   <p className="text-[10px] font-light">
-                    Mohon maaf apabila ada kesalahan dalam penulisan nama &
-                    gelar
+                    We apologize for any inaccuracies in the spelling of names
+                    and titles
                   </p>
                   <Button
                     radius="none"
@@ -116,7 +118,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                       playAudio()
                     }}
                   >
-                    BUKA UNDANGAN
+                    OPEN INVITATION
                   </Button>
                 </div>
               </div>
@@ -307,8 +309,8 @@ const CoupleSection = () => {
       </div>
       <div className="mt-32">
         <div
-          className={cn(anglezScript.className, {
-            'text-center font-[200] text-[37px] mb-4': true,
+          className={cn(analogue.className, {
+            'text-center text-2xl mb-4': true,
           })}
         >
           The bride
@@ -509,8 +511,32 @@ const EventSection = () => {
 
 const LiveStream = () => {
   return (
-    <div className="cbg-secondary text-white/80 text-center px-8 min-h-[60vh] py-24 flex flex-col items-center justify-center">
-      <div className="text-sm font-light">belum tau diisi apa</div>
+    <div className="cbg-secondary text-white/80 text-center px-12 min-h-[60vh] py-24 flex flex-col items-center justify-center relative">
+      <video
+        src="/static/palm_tree_chroma.mp4"
+        muted
+        autoPlay
+        playsInline
+        loop
+        className="absolute top-0 w-full h-full object-cover object-center opacity-20"
+      />
+      <div className="z-10">
+        <div className={cn(ivy.className, 'mb-4 tracking-wide')}>
+          QS. Ar Rum ayat 21
+        </div>
+        <div className="text-lg font-light leading-8">
+          وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا
+          لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ
+          اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+        </div>
+        <div className="text-sm font-light mt-4">
+          Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan
+          pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa
+          tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih
+          sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat
+          tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+        </div>
+      </div>
     </div>
   )
 }
@@ -716,9 +742,12 @@ const GallerySection = () => {
     'aspect-[414/373]',
   ]
   return (
-    <div>
+    <div className="w-full">
       {photos.map((photo, idx) => (
-        <div key={idx} className={'relative ' + aspect[idx]}>
+        <div
+          key={idx}
+          className={'relative w-full overflow-hidden ' + aspect[idx]}
+        >
           <Image
             src={photo}
             fill
