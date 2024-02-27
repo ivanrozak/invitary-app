@@ -500,7 +500,7 @@ const EventSection = () => {
                   ivy.className,
                   'py-3 tracking-wide text-white/80 text-xs',
                 )}
-                href="https://maps.app.goo.gl/3tAfhy5pjdzb3CRJ9"
+                href="http://maps.google.com/maps?daddr=-6.119640877291275,106.89136136680439"
               >
                 GOOGLE MAPS
               </Link>
@@ -511,7 +511,7 @@ const EventSection = () => {
                   ivy.className,
                   'py-3 tracking-wide text-white/80 text-xs',
                 )}
-                href="https://calendar.google.com/calendar/u/0/r/eventedit?text=The+Wedding+of+Defi+and+Asep&details&dates=20240505/20240505&location=Link+maps"
+                href="https://calendar.google.com/calendar/u/0/r/eventedit?text=The+Wedding+of+Defi+and+Asep&details&dates=20240505/20240505&location=Gedung+Serbaguna+Masjid+Babussalam"
               >
                 SAVE THE DATE
               </Link>
