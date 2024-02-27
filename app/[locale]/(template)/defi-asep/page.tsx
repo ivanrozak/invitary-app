@@ -1,5 +1,4 @@
 'use client'
-import '@/styles/snap.scss'
 import {
   CSSProperties,
   forwardRef,
@@ -28,7 +27,6 @@ import {
   ModalFooter,
 } from '@nextui-org/modal'
 import Image from 'next/image'
-import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import {
   DoubleChevronUp,
@@ -169,8 +167,8 @@ const HeroPage = () => {
   const imageList: any[] = ['/asep/IMG_20240130_200324.jpg']
 
   return (
-    <section className="relative">
-      <Fade duration={2000} arrows={false}>
+    <section className="relative w-full h-screen">
+      {/* <Fade duration={2000} arrows={false}>
         {imageList.map((source, i) => (
           <div key={i} className="w-full h-screen">
             <Image
@@ -182,7 +180,14 @@ const HeroPage = () => {
             />
           </div>
         ))}
-      </Fade>
+      </Fade> */}
+      <Image
+        src={imageList[0]}
+        fill
+        className="object-cover object-center"
+        alt="oke"
+        unoptimized
+      />
       <div className="absolute w-full h-screen top-0 z-[1] text-white/80 bg-black/20 flex flex-col items-center justify-between">
         <div className="text-center pt-16">
           <p className="uppercase text-sm font-light">The Wedding of</p>
@@ -265,7 +270,7 @@ const CoupleSection = () => {
             'tracking-wide text-3xl mb-4': true,
           })}
         >
-          Asep Hermawan
+          Asep Hermawan S.Psi
         </div>
         <div
           className={cn(gothic.className, {
@@ -336,7 +341,7 @@ const CoupleSection = () => {
               'tracking-wide text-3xl mb-4': true,
             })}
           >
-            Defi Mira Wibowo
+            Defi Mira Wibowo A.Md.Keb
           </div>
           <div
             className={cn(gothic.className, {
@@ -382,13 +387,13 @@ const LoveStory = () => {
             'uppercase text-sm font-bold mb-4': true,
           })}
         >
-          Jakarta, 17 august 2021
+          Jakarta, 15 Januari 2023
         </div>
         <p className="text-xs font-light tracking-wide">
-          Pertama kali ketemu kevin, consectetur adipiscing elit. Ut elit
-          tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-          luctus nec ullamcorper mattis, pulvinar dapibus leo.
+          Berawal dari Instagram kami berkenalan, singkat cerita pertama kali
+          kami bertemu secara langsung di Mall Kelapa Gading. Kami sama-sama
+          mendapatkan kesan yang positif di pertemuan itu, lalu hubungan kami
+          semakin dekat dan akhirnya sepakat untuk menjalin hubungan.
         </p>
       </div>
       <div className="mb-6">
@@ -397,13 +402,12 @@ const LoveStory = () => {
             'uppercase text-sm font-bold mb-4': true,
           })}
         >
-          Jakarta, 17 august 2021
+          Jakarta, 30 Maret 2023
         </div>
         <p className="text-xs font-light tracking-wide">
-          Pertama kali ketemu kevin, consectetur adipiscing elit. Ut elit
-          tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-          luctus nec ullamcorper mattis, pulvinar dapibus leo.
+          Pada tanggal ini saya (asep) sekeluarga memutuskan untuk
+          bersilaturahmi ke rumah defi dan saling mengenal anggota keluarga satu
+          sama lain.
         </p>
       </div>
       <div className="mb-6">
@@ -412,13 +416,11 @@ const LoveStory = () => {
             'uppercase text-sm font-bold mb-4': true,
           })}
         >
-          Jakarta, 17 august 2021
+          Jakarta, 16 Desember 2023
         </div>
         <p className="text-xs font-light tracking-wide">
-          Pertama kali ketemu kevin, consectetur adipiscing elit. Ut elit
-          tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-          luctus nec ullamcorper mattis, pulvinar dapibus leo.
+          Seiring berjalannya waktu, akhirnya kami sepakat untuk bertunangan
+          sebagai langkah awal untuk menuju ke jenjang pernikahan.
         </p>
       </div>
     </div>
@@ -492,19 +494,27 @@ const EventSection = () => {
             Ibukota Jakarta 14320.
           </div>
           <div className="grid grid-cols-2 w-[90%] mx-auto text-center border-t border-b border-white/80 text-xs mt-12">
-            <div
-              className={cn(ivy.className, {
-                'py-3 tracking-wide': true,
-              })}
-            >
-              GOOGLE MAPS
+            <div>
+              <Link
+                className={cn(
+                  ivy.className,
+                  'py-3 tracking-wide text-white/80 text-xs',
+                )}
+                href="http://maps.google.com/maps?daddr=-6.119640877291275,106.89136136680439"
+              >
+                GOOGLE MAPS
+              </Link>
             </div>
-            <div
-              className={cn(ivy.className, {
-                'py-3 tracking-wide border-l': true,
-              })}
-            >
-              SAVE THE DATE
+            <div className="border-l">
+              <Link
+                className={cn(
+                  ivy.className,
+                  'py-3 tracking-wide text-white/80 text-xs',
+                )}
+                href="https://calendar.google.com/calendar/u/0/r/eventedit?text=The+Wedding+of+Defi+and+Asep&details&dates=20240505/20240505&location=Gedung+Serbaguna+Masjid+Babussalam"
+              >
+                SAVE THE DATE
+              </Link>
             </div>
           </div>
         </div>
@@ -796,7 +806,7 @@ const LeftHeroFixed = () => {
   const imgUrl = '/asep/IMG_20240203_113752.jpg'
   return (
     <div
-      className="fixed top-0 h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-bottom"
+      className="fixed top-0 z-10 h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-bottom"
       style={{ backgroundImage: `url(${imgUrl})` }}
     >
       <div className="relative w-full h-full flex items-end overflow-hidden">
