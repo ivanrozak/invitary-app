@@ -8,17 +8,13 @@ import {
   useRef,
   useState,
 } from 'react'
-import { LazyMotion, domAnimation, useInView, motion } from 'framer-motion'
-import { useTheme } from 'next-themes'
+import { useInView } from 'framer-motion'
 import {
-  // Modal,
-  // ModalContent,
-  // ModalBody,
   Button,
-  // useDisclosure,
   cn,
   Divider,
   Input,
+  Link,
   Select,
   SelectItem,
   Textarea,
@@ -26,8 +22,10 @@ import {
 import {
   Modal,
   ModalContent,
+  ModalHeader,
   ModalBody,
   useDisclosure,
+  ModalFooter,
 } from '@nextui-org/modal'
 import Image from 'next/image'
 import { Fade } from 'react-slideshow-image'
@@ -98,7 +96,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                       'text-4xl md:text-6xl tracking-wide mt-3': true,
                     })}
                   >
-                    Devi & Asep
+                    Defi & Asep
                   </h1>
                 </div>
                 <div>
@@ -131,7 +129,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
 }
 
 const CountDown = () => {
-  const countdown = useCountDown({ dueDate: '2024-03-15T10:00:00' })
+  const countdown = useCountDown({ dueDate: '2024-05-05T11:00:00' })
   return (
     <div
       className={cn(ivy.className, {
@@ -162,10 +160,7 @@ const CountDown = () => {
 }
 
 const HeroPage = () => {
-  const imageList: any[] = [
-    '/asep/IMG_20240130_203158.jpg',
-    '/asep/IMG_20240203_113752.jpg',
-  ]
+  const imageList: any[] = ['/asep/IMG_20240130_200324.jpg']
 
   return (
     <section className="relative">
@@ -190,7 +185,7 @@ const HeroPage = () => {
               'text-4xl md:text-6xl tracking-wide mt-3': true,
             })}
           >
-            Devi & Asep
+            Defi & Asep
           </h1>
           <p className="text-sm font-light px-6 mt-4">
             No one has ever seen God; but if we love one another, God lives in
@@ -227,7 +222,7 @@ const CoupleSection = () => {
       <div className="relative aspect-[260/290] w-[60%]">
         <Image
           ref={ref1}
-          src="/asep/IMG_20240130_203158.jpg"
+          src="/asep/IMG_20240130_105642.jpg"
           fill
           className={cn('object-center object-cover', {
             'animate-fade-in-left': isInView1,
@@ -235,7 +230,7 @@ const CoupleSection = () => {
           style={{ '--index': 1 } as CSSProperties}
           alt="asep"
         />
-        <div className="absolute z-10 -top-8 -right-20">
+        <div className="absolute z-10 -top-8 -right-20 -mt-1 -mr-1">
           <svg
             viewBox="0 0 100 100"
             width="100"
@@ -274,16 +269,20 @@ const CoupleSection = () => {
           The Son of :
         </div>
         <div className="text-xs mt-4 font-light">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores,
-          nostrum.
+          Bpk. Mulyono & Ibu Tati Kurnia Hayati B
         </div>
-        <div
+        <Button
+          as={Link}
           className={cn(ivy.className, {
-            'tracking-wide mt-8': true,
+            'tracking-wide mt-8 text-white/80 border-1': true,
           })}
+          href="https://www.instagram.com/hermwn_asep/"
+          startContent={<InstagramIcon className="w-5 h-5" />}
+          radius="none"
+          variant="bordered"
         >
           INSTAGRAM
-        </div>
+        </Button>
       </div>
       <div className="flex items-end">
         <div
@@ -291,12 +290,12 @@ const CoupleSection = () => {
             'uppercase text-sm tracking-wide font-bold ml-10': true,
           })}
         >
-          21.08.2024
+          05.05.2024
         </div>
         <div className="relative aspect-[220/213] w-[50%] ml-auto">
           <Image
             ref={ref2}
-            src="/asep/IMG_20240130_203158.jpg"
+            src="/asep/IMG_20240203_114054.jpg"
             fill
             className={cn('object-center object-cover', {
               'animate-fade-in-right': isInView2,
@@ -331,7 +330,7 @@ const CoupleSection = () => {
               'tracking-wide text-3xl mb-4': true,
             })}
           >
-            Devi Prisilia
+            Defi Mira Wibowo
           </div>
           <div
             className={cn(gothic.className, {
@@ -341,16 +340,20 @@ const CoupleSection = () => {
             The Daughter of :
           </div>
           <div className="text-xs mt-4 font-light">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores,
-            nostrum.
+            Bpk. Sri Kukuh Wibowo & Ibu Toyimah
           </div>
-          <div
+          <Button
+            as={Link}
             className={cn(ivy.className, {
-              'tracking-wide mt-8': true,
+              'tracking-wide mt-8 text-white/80 border-1': true,
             })}
+            href="https://www.instagram.com/devimirawibowo/"
+            startContent={<InstagramIcon className="w-5 h-5" />}
+            radius="none"
+            variant="bordered"
           >
             INSTAGRAM
-          </div>
+          </Button>
         </div>
       </div>
     </div>
@@ -423,7 +426,7 @@ const EventSection = () => {
       <div>
         <div className="relative aspect-[335/223]">
           <Image
-            src="/asep/IMG_20240130_203158.jpg"
+            src="/asep/IMG_20240203_112951.jpg"
             fill
             className="object-center object-cover"
             alt="asep"
@@ -442,19 +445,19 @@ const EventSection = () => {
               'tracking-wide mb-4': true,
             })}
           >
-            SUNDAY, 21 MEI 2024 <br />
-            11 AM - 12 PM
+            SUNDAY, May 05 2024 <br />
+            07.30 WIB
           </div>
           <div
             className={cn(gothic.className, {
               'uppercase font-bold': true,
             })}
           >
-            Grand Hotel
+            Masjid Babussalam
           </div>
           <div className="text-xs mt-2 font-light">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores,
-            nostrum.
+            Jl Laksda Yos Sudarso 27-29, Jakarta Utara, <br /> Daerah Khusus
+            Ibukota Jakarta 14320.
           </div>
           <div
             className={cn(ivy.className, {
@@ -468,19 +471,19 @@ const EventSection = () => {
               'tracking-wide mb-4': true,
             })}
           >
-            SUNDAY, 21 MEI 2024 <br />
-            11 AM - 12 PM
+            SUNDAY, MAY 05 2024 <br />
+            11.00 - 13.00 WIB
           </div>
           <div
             className={cn(gothic.className, {
               'uppercase font-bold': true,
             })}
           >
-            Grand Hotel
+            Masjid Babussalam
           </div>
           <div className="text-xs mt-2 font-light">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores,
-            nostrum.
+            Jl Laksda Yos Sudarso 27-29, Jakarta Utara, <br /> Daerah Khusus
+            Ibukota Jakarta 14320.
           </div>
           <div className="grid grid-cols-2 w-[90%] mx-auto text-center border-t border-b border-white/80 text-xs mt-12">
             <div
@@ -550,7 +553,7 @@ const RsvpSection = () => {
           confirm your attendance through reservation form below
         </div>
         <Image
-          src="/asep/IMG_20240130_203158.jpg"
+          src="/asep/IMG_20240130_203035.jpg"
           fill
           className="object-center object-cover"
           alt="asep"
@@ -606,7 +609,10 @@ const RsvpSection = () => {
           }}
         />
         <Button
-          className="w-fit cbg-tertiary text-white font-light tracking-wider"
+          className={cn(
+            'w-fit cbg-secondary text-white font-light tracking-wider',
+            ivy.className,
+          )}
           radius="none"
         >
           CONFIRM
@@ -617,13 +623,14 @@ const RsvpSection = () => {
 }
 
 const GiftSection = () => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
   return (
     <div className="cbg-secondary text-white/80 px-8 pt-24 pb-16">
       <div className="grid grid-cols-2 gap-3">
         <div className="pt-12">
           <div className="relative aspect-[177/217]">
             <Image
-              src="/asep/IMG_20240130_203158.jpg"
+              src="/asep/IMG_20240130_200809.jpg"
               fill
               className="object-center object-cover"
               alt="asep"
@@ -633,7 +640,7 @@ const GiftSection = () => {
         <div>
           <div className="relative aspect-[157/173]">
             <Image
-              src="/asep/IMG_20240130_203158.jpg"
+              src="/asep/IMG_20240203_114313.jpg"
               fill
               className="object-center object-cover"
               alt="asep"
@@ -649,26 +656,57 @@ const GiftSection = () => {
         </div>
       </div>
       <p className="text-xs font-light text-center mt-4 px-4">
-        We also plan to publish our marriage virtually via the Youtube platform
-        which you can follow via the following link
+        Your presence at our wedding is the greatest gift we could receive. Your
+        good wishes and joy will make our day truly memorable.
       </p>
-      <div
-        className={cn(ivy.className, {
-          'tracking-wide mt-8 text-center': true,
-        })}
-      >
-        CLICK HERE
+      <div className="flex justify-center items-center">
+        <Button
+          onPress={onOpen}
+          radius="none"
+          color="primary"
+          className={cn(ivy.className, {
+            'tracking-wide mt-8 text-center cbg-primary': true,
+          })}
+        >
+          CLICK HERE
+        </Button>
       </div>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className={ivy.className}>Wedding Gift</ModalHeader>
+              <ModalBody>
+                <p className="text-sm">
+                  Your presence at our wedding is the greatest gift we could
+                  receive. Your good wishes and joy will make our day truly
+                  memorable.
+                </p>
+                <div className="text-center text-sm flex flex-col gap-2 mt-4">
+                  <p>BCA (Bank Central Asia)</p>
+                  <p className="font-semibold">4140883595</p>
+                  <p>AN/ Defi Mira Wibowo</p>
+                </div>
+              </ModalBody>
+              <ModalFooter className="justify-center pb-8">
+                <Button color="primary" radius="none">
+                  Copy Account Number
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   )
 }
 
 const GallerySection = () => {
   const photos = [
+    '/asep/IMG_20240203_151740.jpg',
+    '/asep/IMG_20240203_152928.jpg',
     '/asep/IMG_8868.jpg',
-    '/asep/IMG_20240203_114054.jpg',
     '/asep/IMG_20240203_152323.jpg',
-    '/asep/IMG_20240130_105642.jpg',
   ]
 
   const aspect = [
@@ -722,11 +760,10 @@ const ThankyouSection = () => {
 }
 
 const LeftHeroFixed = () => {
-  const imgUrl =
-    'https://groovepublic.com/wp-content/uploads/2023/10/blog-olive7.jpg'
+  const imgUrl = '/asep/IMG_20240203_113752.jpg'
   return (
     <div
-      className="fixed top-0 h-screen hidden md:block w-[calc(100vw-510px)] bg-cover bg-center"
+      className="fixed top-0 h-screen hidden md:block w-[calc(100vw-510px)] bg-cover bg-bottom"
       style={{ backgroundImage: `url(${imgUrl})` }}
     >
       <div className="relative w-full h-full flex items-end">
@@ -745,9 +782,9 @@ const LeftHeroFixed = () => {
               'text-4xl tracking-wide py-2': true,
             })}
           >
-            Alvin & Shelly
+            Defi & Asep
           </h1>
-          <div>Sabtu, 15 November 2024</div>
+          <div>Sunday, May 05 2024</div>
         </div>
       </div>
     </div>
@@ -755,8 +792,7 @@ const LeftHeroFixed = () => {
 }
 
 const AudioSection = forwardRef((props, ref) => {
-  const audioUrl =
-    'https://groovepublic.com/wp-content/uploads/2023/10/y2mate.com-Sod-Ven-In-My-Imagination-Official-Video.mp3'
+  const audioUrl = '/asep/jawa_rustic.mp3'
 
   const [audioLoaded, setAudioLoaded] = useState(false)
   const [audioPlaying, setAudioPlaying] = useState(false)
