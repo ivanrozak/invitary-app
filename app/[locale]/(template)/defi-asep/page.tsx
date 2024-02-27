@@ -36,7 +36,7 @@ import {
   SpeakerMuted,
   SpeakerUnmuted,
 } from '@/components/icons'
-import { analogue, anglezScript, gothic, ivy } from '@/app/fonts'
+import { analogue, gothic, ivy } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import './style.css'
 
@@ -666,7 +666,7 @@ const GiftSection = () => {
         <div>
           <div className="relative aspect-[157/173]">
             <Image
-              src="/asep/IMG_20240203_114313.jpg"
+              src="/asep/IMG_20240127_222815.jpg"
               fill
               className="object-center object-cover"
               alt="asep"
@@ -738,8 +738,8 @@ const GallerySection = () => {
   const aspect = [
     'aspect-[413/313]',
     'aspect-[413/313]',
-    'aspect-[414/276]',
-    'aspect-[414/373]',
+    'aspect-[413/313]',
+    'aspect-[413/313]',
   ]
   return (
     <div className="w-full">
@@ -792,17 +792,17 @@ const LeftHeroFixed = () => {
   const imgUrl = '/asep/IMG_20240203_113752.jpg'
   return (
     <div
-      className="fixed top-0 h-screen hidden md:block w-[calc(100vw-510px)] bg-cover bg-bottom"
+      className="fixed top-0 h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-bottom"
       style={{ backgroundImage: `url(${imgUrl})` }}
     >
-      <div className="relative w-full h-full flex items-end">
+      <div className="relative w-full h-full flex items-end overflow-hidden">
         <video
           src="https://groovepublic.com/wp-content/uploads/2023/01/flars-online-video-cutter.com_.mp4"
           muted
           autoPlay
           playsInline
           loop
-          className="absolute top-0 w-full h-full object-cover object-center opacity-40"
+          className="absolute top-0 w-full h-full object-cover object-center opacity-20"
         />
         <div className="p-8 mt-auto text-white z-10">
           <div>The Wedding Of</div>
@@ -897,22 +897,22 @@ const AudioSection = forwardRef((props, ref) => {
 AudioSection.displayName = 'AudioSection'
 
 export default function AsepPage() {
-  const [themeData, setData] = useState()
+  // const [themeData, setData] = useState()
   const audioRef = useRef(null)
   const playAudio = () => {
     // @ts-ignore
     audioRef.current?.playAudio()
   }
-  const fetchData = async () => {
-    const res = await fetch(
-      'http://localhost:3002/api/theme?themeId=65b54bb784603ab3cf9e09c5',
-    )
-    const data = await res.json()
-    setData(data)
-  }
-  useEffect(() => {
-    fetchData()
-  }, [])
+  // const fetchData = async () => {
+  //   const res = await fetch(
+  //     'http://localhost:3002/api/theme?themeId=65b54bb784603ab3cf9e09c5',
+  //   )
+  //   const data = await res.json()
+  //   setData(data)
+  // }
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
   return (
     <div>
       <Opener playAudio={playAudio} />
