@@ -309,7 +309,7 @@ const CoupleSection = () => {
             src="/asep/IMG_20240203_114054.jpg"
             fill
             className={cn('object-center object-cover', {
-              'animate-fade-in-right': isInView2,
+              'animate-fade-in': isInView2,
             })}
             style={{ '--index': 1 } as CSSProperties}
             alt="oke"
@@ -329,7 +329,7 @@ const CoupleSection = () => {
             src="/asep/IMG_20240130_203158.jpg"
             fill
             className={cn('object-center object-cover', {
-              'animate-zoom-in': isInView3,
+              'animate-fade-in': isInView3,
             })}
             style={{ '--index': 1 } as CSSProperties}
             alt="asep"
@@ -465,7 +465,8 @@ const EventSection = () => {
           </div>
           <div className="text-xs mt-2 font-light">
             Jl Laksda Yos Sudarso 27-29, Jakarta Utara, <br /> Daerah Khusus
-            Ibukota Jakarta 14320.
+            Ibukota Jakarta 14320. <br />
+            (Kantor Walikota Jakarta Utara)
           </div>
           <div
             className={cn(ivy.className, {
@@ -491,7 +492,8 @@ const EventSection = () => {
           </div>
           <div className="text-xs mt-2 font-light">
             Jl Laksda Yos Sudarso 27-29, Jakarta Utara, <br /> Daerah Khusus
-            Ibukota Jakarta 14320.
+            Ibukota Jakarta 14320. <br />
+            (Kantor Walikota Jakarta Utara)
           </div>
           <div className="grid grid-cols-2 w-[90%] mx-auto text-center border-t border-b border-white/80 text-xs mt-12">
             <div>
@@ -680,7 +682,7 @@ const GiftSection = () => {
         <div>
           <div className="relative aspect-[157/173]">
             <Image
-              src="/asep/IMG_20240127_222815.jpg"
+              src="/asep/IMG_20240130_202834.jpg"
               fill
               className="object-center object-cover"
               alt="asep"
@@ -886,24 +888,23 @@ const AudioSection = forwardRef((props, ref) => {
         id="myAudio"
         className="hidden"
         preload="auto"
+        loop
         onEnded={pauseAudio}
       >
         <source src={audioUrl} type="audio/mp3" />
         Your browser does not support the audio tag.
       </audio>
-      {audioLoaded && (
-        <div className="fixed z-10 bottom-5 right-5">
-          <Button
-            isIconOnly
-            className="bg-white/40 text-black/60"
-            radius="full"
-            size="sm"
-            onClick={audioPlaying ? pauseAudio : playAudio}
-          >
-            {audioPlaying ? <SpeakerUnmuted /> : <SpeakerMuted />}
-          </Button>
-        </div>
-      )}
+      <div className="fixed z-50 bottom-5 right-5">
+        <Button
+          isIconOnly
+          className="bg-white/40 text-black/60"
+          radius="full"
+          size="sm"
+          onClick={audioPlaying ? pauseAudio : playAudio}
+        >
+          {audioPlaying ? <SpeakerUnmuted /> : <SpeakerMuted />}
+        </Button>
+      </div>
     </>
   )
 })
