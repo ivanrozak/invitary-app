@@ -264,7 +264,7 @@ const CoupleSection = () => {
           </svg>
         </div>
       </div>
-      <div className="p-6 mt-16">
+      <div className="p-6 mt-16 relative z-10">
         <div
           className={cn(ivy.className, {
             'tracking-wide text-3xl mb-4': true,
@@ -295,15 +295,24 @@ const CoupleSection = () => {
           INSTAGRAM
         </Button>
       </div>
-      <div className="flex items-end">
+      <div className="flex items-end relative">
+        <Image
+          src="/asep/gunungan.png"
+          width={945}
+          height={1571}
+          className="absolute w-[60%] -bottom-6 -left-16 opacity-[7%]"
+          unoptimized
+          alt="gunungan"
+        />
         <div
           className={cn(gothic.className, {
-            'uppercase text-sm tracking-wide font-bold ml-10': true,
+            'uppercase text-sm tracking-wide font-bold ml-10 relative z-10':
+              true,
           })}
         >
           05.05.2024
         </div>
-        <div className="relative aspect-[220/213] w-[50%] ml-auto">
+        <div className="relative aspect-[220/213] w-[50%] ml-auto z-10">
           <Image
             ref={ref2}
             src="/asep/IMG_20240203_114054.jpg"
@@ -429,7 +438,7 @@ const LoveStory = () => {
 
 const EventSection = () => {
   return (
-    <div className="w-full cbg-primary text-white/70 py-12 px-10">
+    <div className="w-full cbg-primary text-white/70 py-12 px-10 relative overflow-hidden">
       <div className="absolute w-full h-[1px] mt-32 border-b border-white/50 -mx-10" />
       <div>
         <div className="relative aspect-[335/223]">
@@ -521,6 +530,22 @@ const EventSection = () => {
           </div>
         </div>
       </div>
+      <Image
+        src="/asep/gunungan.png"
+        width={945}
+        height={1571}
+        className="absolute w-[55%] bottom-32 -left-[142px] opacity-[7%]"
+        unoptimized
+        alt="gunungan"
+      />
+      <Image
+        src="/asep/gunungan.png"
+        width={945}
+        height={1571}
+        className="absolute w-[55%] bottom-32 -right-[142px] opacity-[7%]"
+        unoptimized
+        alt="gunungan"
+      />
     </div>
   )
 }
@@ -551,6 +576,38 @@ const LiveStream = () => {
           tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih
           sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat
           tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+        </div>
+        <div className="mt-16">
+          <div className={cn(gothic.className, 'text-base uppercase')}>
+            Turut Mengundang
+          </div>
+          <div
+            className={cn(ivy.className, 'text-sm mb-2 mt-3 tracking-wider')}
+          >
+            Pihak Perempuan :
+          </div>
+          <ul className="flex flex-col gap-1 font-light text-xs">
+            <li>
+              Bapak. Dr. ALI MAULANA HAKIM, S.IP, M.Si (Walikota Kota ADM.{' '}
+              <br />
+              Jakarta Utara)
+            </li>
+            <li>
+              Bapak Sigit Wijatmoko, AP, M.Si (Asisten Pemerintahan Sekda <br />
+              Provinsi DKI Jakarta)
+            </li>
+            <li>Keluarga Besar Bapak Alm. H. Muhadi</li>
+            <li>Keluarga Besar Bapak Alm. Reso Wiyono</li>
+          </ul>
+          <div
+            className={cn(ivy.className, 'text-sm mb-2 mt-3 tracking-wider')}
+          >
+            Pihak Laki-laki :
+          </div>
+          <ul className="flex flex-col gap-1 font-light text-xs">
+            <li>Keluarga Besar Bapak Alm. Drs. E. L. Bachtiar</li>
+            <li>Keluarga Besar Bapak Alm. Tarsa Nitidisastra</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -778,28 +835,38 @@ const GallerySection = () => {
 
 const ThankyouSection = () => {
   return (
-    <div className="cbg-secondary text-white/80 text-center px-8 pt-20 pb-16">
-      <div
-        className={cn(ivy.className, {
-          'tracking-wide text-3xl mt-4': true,
-        })}
-      >
-        Thank You!
+    <div className="cbg-secondary text-white/80 text-center px-8 pt-20 pb-16 relative overflow-hidden">
+      <Image
+        src="/asep/gunungan.png"
+        width={945}
+        height={1571}
+        className="absolute w-[50%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[7%]"
+        unoptimized
+        alt="gunungan"
+      />
+      <div className="relative z-10">
+        <div
+          className={cn(ivy.className, {
+            'tracking-wide text-3xl mt-4': true,
+          })}
+        >
+          Thank You!
+        </div>
+        <p className="text-xs font-light mt-8 leading-5">
+          Thank you for your kind words, prayers, and willingness to come in our
+          wedding celebration. We wish your understanding for all health
+          protocols restriction. <br />
+          See you on our wedding day !
+        </p>
+        <div
+          className={cn(ivy.className, {
+            'tracking-wide text-xl mt-32': true,
+          })}
+        >
+          Powered by
+        </div>
+        <p className="font-light text-xs mt-4">invitary.com</p>
       </div>
-      <p className="text-xs font-light mt-8 leading-5">
-        Thank you for your kind words, prayers, and willingness to come in our
-        wedding celebration. We wish your understanding for all health protocols
-        restriction. <br />
-        See you on our wedding day !
-      </p>
-      <div
-        className={cn(ivy.className, {
-          'tracking-wide text-xl mt-32': true,
-        })}
-      >
-        Powered by
-      </div>
-      <p className="font-light text-xs mt-4">invitary.com</p>
     </div>
   )
 }
