@@ -39,6 +39,8 @@ import useCountDown from '@/hooks/useCountDown'
 import './style.css'
 import { useSearchParams } from 'next/navigation'
 import { Viewport } from 'next'
+import { fetchComments, postComment } from '@/lib/useComments'
+import { Comment } from '@/types'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
@@ -665,6 +667,74 @@ const RsvpSection = () => {
       value: '2',
     },
   ]
+
+  const userId = '656fd880b2d14968a9df7bf7'
+  const [loading, setLoading] = useState(false)
+  const [comments, setComments] = useState<Comment[]>([])
+  const [name, setName] = useState('')
+  const [content, setContent] = useState('')
+  const [confirmation, setConfirmation] = useState('YES')
+  const [totalGuest, setTotalGuest] = useState('1')
+
+  const handleFetchComment = async () => {
+    const res = await fetchComments(userId)
+    setComments(res)
+  }
+
+  const [invalidName, setInvalidName] = useState(false)
+  const [invalidContent, setInvalidContent] = useState(false)
+
+  const validate = () => {
+    if (!name) {
+      setInvalidName(true)
+    }
+    if (!content) {
+      setInvalidContent(true)
+    }
+  }
+
+  useEffect(() => {
+    if (name) {
+      setInvalidName(false)
+    }
+    if (content) {
+      setInvalidContent(false)
+    }
+  }, [name, content])
+
+  const handlePostComment = async () => {
+    validate()
+    if (!name || !content) {
+      console.log('masuk sini')
+      return
+    }
+    setLoading(true)
+    const payload = {
+      userId,
+      name,
+      content,
+      confirmation,
+      totalGuest,
+    }
+    const res = await postComment(payload)
+    if (res) {
+      resetFields()
+      handleFetchComment()
+      setLoading(false)
+    }
+  }
+
+  const resetFields = () => {
+    setName('')
+    setContent('')
+    setConfirmation('YES')
+    setTotalGuest('1')
+  }
+
+  useEffect(() => {
+    handleFetchComment()
+  }, [])
+
   return (
     <div className="w-full cbg-primary text-white/70 py-16">
       <div className="relative ml-auto aspect-[374/320] w-[90%]">
@@ -709,6 +779,10 @@ const RsvpSection = () => {
           classNames={{
             label: cn(ivy.className, { '!text-white/80': true }),
           }}
+          value={name}
+          onValueChange={setName}
+          isInvalid={invalidName}
+          errorMessage={invalidName && 'Name is required'}
         />
         <Select
           items={attendOptions}
@@ -720,6 +794,8 @@ const RsvpSection = () => {
           classNames={{
             label: cn(ivy.className, { '!text-white/80': true }),
           }}
+          value={confirmation}
+          onChange={(e) => setConfirmation(e.target.value)}
         >
           {(attend) => (
             <SelectItem key={attend.value}>{attend.label}</SelectItem>
@@ -735,6 +811,8 @@ const RsvpSection = () => {
           classNames={{
             label: cn(ivy.className, { '!text-white/80': true }),
           }}
+          value={totalGuest}
+          onChange={(e) => setTotalGuest(e.target.value)}
         >
           {(guest) => <SelectItem key={guest.value}>{guest.label}</SelectItem>}
         </Select>
@@ -747,6 +825,10 @@ const RsvpSection = () => {
           classNames={{
             label: cn(ivy.className, { '!text-white/80': true }),
           }}
+          value={content}
+          onValueChange={setContent}
+          isInvalid={invalidContent}
+          errorMessage={invalidContent && 'Wishes is required'}
         />
         <Button
           className={cn(
@@ -754,9 +836,20 @@ const RsvpSection = () => {
             ivy.className,
           )}
           radius="none"
+          isLoading={loading}
+          onClick={handlePostComment}
         >
           CONFIRM
         </Button>
+      </div>
+      <div className="text-sm text-white/80 px-6 overflow-y-auto max-h-[50vh] flex flex-col gap-2">
+        {comments.map((comment) => (
+          <div key={comment.id} className="cbg-secondary px-4 py-2 rounded-md">
+            <div>{comment.name}</div>
+            <div className="text-[10px] font-light">{comment.createdAt}</div>
+            <div className="font-light">{comment.content}</div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -764,6 +857,8 @@ const RsvpSection = () => {
 
 const GiftSection = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+
+  const accountNumber = 4140883595
   return (
     <div className="cbg-secondary text-white/80 px-8 pt-24 pb-16">
       <div className="grid grid-cols-2 gap-3">
@@ -824,7 +919,7 @@ const GiftSection = () => {
                 </p>
                 <div className="text-center text-sm flex flex-col gap-2 mt-4">
                   <p>BCA (Bank Central Asia)</p>
-                  <p className="font-semibold">4140883595</p>
+                  <p className="font-semibold">{accountNumber}</p>
                   <p>AN/ Defi Mira Wibowo</p>
                 </div>
               </ModalBody>
