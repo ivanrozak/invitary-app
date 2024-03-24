@@ -36,19 +36,19 @@ const config: Config = {
         },
         'zoom-in': {
           '0%': { transform: 'scale3d(.3,.3,.3)', opacity: '0' },
-          '50%': { opacity: '1' },
+          '100%': { opacity: '1' },
         },
         'fade-in-up': {
           '0%': { transform: 'translate3d(0,100%,0)', opacity: '0' },
-          '50%': { transform: 'none', opacity: '1' },
+          '100%': { transform: 'none', opacity: '1' },
         },
         'fade-in-left': {
-          '0%': { transform: 'translate3d(-100%,0,0)', opacity: '0.6' },
-          '50%': { transform: 'none', opacity: '1' },
+          '0%': { transform: 'translate3d(-100%,0,0)', opacity: '0' },
+          '100%': { transform: 'none', opacity: '1' },
         },
         'fade-in-right': {
-          '0%': { transform: 'translate3d(100%,0,0)', opacity: '0.6' },
-          '50%': { transform: 'none', opacity: '1' },
+          '0%': { transform: 'translate3d(100%,0,0)', opacity: '0' },
+          '100%': { transform: 'none', opacity: '1' },
         },
         'slide-bottom': {
           '0%': { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },

@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { useInView } from 'framer-motion'
+import { useInView, m } from 'framer-motion'
 import {
   Button,
   cn,
@@ -38,6 +38,7 @@ import { analogue, gothic, ivy } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import './style.css'
 import { useSearchParams } from 'next/navigation'
+import { Viewport } from 'next'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
@@ -228,18 +229,21 @@ const CoupleSection = () => {
   const isInView3 = useInView(ref3, { once: true })
 
   return (
-    <div className="w-full cbg-primary text-white/70 min-h-screen py-24">
-      <div className="absolute w-full h-[1px] mt-36 border-b border-white/50 my-auto" />
-      <div className="relative aspect-[260/290] w-[60%]">
+    <div className="w-full cbg-primary text-white/70 min-h-screen py-24 relative">
+      <div className="absolute right-0 w-[40%] h-[1px] mt-36 border-b border-white/50 my-auto" />
+      <div ref={ref1} className="relative w-[60%]">
         <Image
-          ref={ref1}
           src="/asep/IMG_20240130_105642.jpg"
-          fill
-          className={cn('object-center object-cover', {
-            'animate-fade-in-left': isInView1,
-          })}
-          style={{ '--index': 1 } as CSSProperties}
+          width={260}
+          height={290}
+          className="object-cover object-center aspect-[260/290] delay-500"
+          unoptimized
           alt="asep"
+          style={{
+            transform: isInView1 ? 'none' : 'translateX(-200px)',
+            opacity: isInView1 ? 1 : 0,
+            transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
+          }}
         />
         <div className="absolute z-10 -top-8 -right-20 -mt-1 -mr-1">
           <svg
@@ -317,8 +321,8 @@ const CoupleSection = () => {
             ref={ref2}
             src="/asep/IMG_20240203_114054.jpg"
             fill
-            className={cn('object-center object-cover', {
-              'animate-fade-in': isInView2,
+            className={cn('object-center object-cover delay-500', {
+              'animate-fade-in-right': isInView2,
             })}
             style={{ '--index': 1 } as CSSProperties}
             alt="oke"
@@ -337,7 +341,7 @@ const CoupleSection = () => {
           <Image
             src="/asep/IMG_20240130_203158.jpg"
             fill
-            className={cn('object-center object-cover', {
+            className={cn('object-center object-cover delay-500', {
               'animate-fade-in': isInView3,
             })}
             style={{ '--index': 1 } as CSSProperties}
@@ -381,62 +385,72 @@ const CoupleSection = () => {
 }
 
 const LoveStory = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
   return (
     <div className="cbg-secondary text-white/80 text-center px-8 py-24">
       <div
-        className={cn(ivy.className, {
-          'tracking-wide text-3xl mb-6': true,
-        })}
+        ref={ref}
+        className={cn({ 'animate-in': isInView })}
+        style={{ '--index': 4 } as CSSProperties}
       >
-        LOVE STORY
-      </div>
-      <div className="mb-6">
         <div
-          className={cn(gothic.className, {
-            'uppercase text-sm font-bold mb-4': true,
+          className={cn(ivy.className, {
+            'tracking-wide text-3xl mb-6': true,
           })}
         >
-          Jakarta, 15 Januari 2023
+          LOVE STORY
         </div>
-        <p className="text-xs font-light tracking-wide">
-          Berawal dari Instagram kami berkenalan, singkat cerita pertama kali
-          kami bertemu secara langsung di Mall Kelapa Gading. Kami sama-sama
-          mendapatkan kesan yang positif di pertemuan itu, lalu hubungan kami
-          semakin dekat dan akhirnya sepakat untuk menjalin hubungan.
-        </p>
-      </div>
-      <div className="mb-6">
-        <div
-          className={cn(gothic.className, {
-            'uppercase text-sm font-bold mb-4': true,
-          })}
-        >
-          Jakarta, 30 Maret 2023
+        <div className="mb-6">
+          <div
+            className={cn(gothic.className, {
+              'uppercase text-sm font-bold mb-4': true,
+            })}
+          >
+            Jakarta, 15 Januari 2023
+          </div>
+          <p className="text-xs font-light tracking-wide">
+            Berawal dari Instagram kami berkenalan, singkat cerita pertama kali
+            kami bertemu secara langsung di Mall Kelapa Gading. Kami sama-sama
+            mendapatkan kesan yang positif di pertemuan itu, lalu hubungan kami
+            semakin dekat dan akhirnya sepakat untuk menjalin hubungan.
+          </p>
         </div>
-        <p className="text-xs font-light tracking-wide">
-          Pada tanggal ini saya (asep) sekeluarga memutuskan untuk
-          bersilaturahmi ke rumah defi dan saling mengenal anggota keluarga satu
-          sama lain.
-        </p>
-      </div>
-      <div className="mb-6">
-        <div
-          className={cn(gothic.className, {
-            'uppercase text-sm font-bold mb-4': true,
-          })}
-        >
-          Jakarta, 16 Desember 2023
+        <div className="mb-6">
+          <div
+            className={cn(gothic.className, {
+              'uppercase text-sm font-bold mb-4': true,
+            })}
+          >
+            Jakarta, 30 Maret 2023
+          </div>
+          <p className="text-xs font-light tracking-wide">
+            Pada tanggal ini saya (asep) sekeluarga memutuskan untuk
+            bersilaturahmi ke rumah defi dan saling mengenal anggota keluarga
+            satu sama lain.
+          </p>
         </div>
-        <p className="text-xs font-light tracking-wide">
-          Seiring berjalannya waktu, akhirnya kami sepakat untuk bertunangan
-          sebagai langkah awal untuk menuju ke jenjang pernikahan.
-        </p>
+        <div className="mb-6">
+          <div
+            className={cn(gothic.className, {
+              'uppercase text-sm font-bold mb-4': true,
+            })}
+          >
+            Jakarta, 16 Desember 2023
+          </div>
+          <p className="text-xs font-light tracking-wide">
+            Seiring berjalannya waktu, akhirnya kami sepakat untuk bertunangan
+            sebagai langkah awal untuk menuju ke jenjang pernikahan.
+          </p>
+        </div>
       </div>
     </div>
   )
 }
 
 const EventSection = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
   return (
     <div className="w-full cbg-primary text-white/70 py-12 px-10 relative overflow-hidden">
       <div className="absolute w-full h-[1px] mt-32 border-b border-white/50 -mx-10" />
@@ -449,7 +463,11 @@ const EventSection = () => {
             alt="asep"
           />
         </div>
-        <div className="text-center mt-8">
+        <div
+          ref={ref}
+          className={cn('text-center mt-8', { 'animate-in': isInView })}
+          style={{ '--index': 4 } as CSSProperties}
+        >
           <div
             className={cn(ivy.className, {
               'tracking-wide font-bold mb-4': true,
@@ -551,6 +569,8 @@ const EventSection = () => {
 }
 
 const LiveStream = () => {
+  // const ref = useRef(null)
+  // const isInView = useInView(ref, { once: true })
   return (
     <div className="cbg-secondary text-white/80 text-center px-12 min-h-[60vh] py-24 flex flex-col items-center justify-center relative">
       <video
@@ -561,7 +581,12 @@ const LiveStream = () => {
         loop
         className="absolute top-0 w-full h-full object-cover object-center opacity-20"
       />
-      <div className="z-10">
+      <div
+        // ref={ref}
+        // className={cn('z-10', { 'animate-in': isInView })}
+        // style={{ '--index': 4 } as CSSProperties}
+        className="z-10"
+      >
         <div className={cn(ivy.className, 'mb-4 tracking-wide')}>
           QS. Ar Rum ayat 21
         </div>
@@ -615,6 +640,10 @@ const LiveStream = () => {
 }
 
 const RsvpSection = () => {
+  const ref1 = useRef(null)
+  const isInView1 = useInView(ref1, { once: true })
+  const ref2 = useRef(null)
+  const isInView2 = useInView(ref2, { once: true })
   const attendOptions = [
     {
       label: 'Yes, I will gladely attend',
@@ -640,14 +669,26 @@ const RsvpSection = () => {
     <div className="w-full cbg-primary text-white/70 py-16">
       <div className="relative ml-auto aspect-[374/320] w-[90%]">
         <div
-          className={cn(ivy.className, {
-            'absolute top-0 left-0 z-10 cbg-primary tracking-wide text-3xl font-bold pr-4 pb-3':
-              true,
-          })}
+          ref={ref1}
+          className={cn(
+            ivy.className,
+            'absolute top-0 left-0 z-10 cbg-primary tracking-wide text-3xl font-bold pr-4 pb-3',
+            { 'animate-fade-in-left': isInView1 },
+          )}
+          style={{ '--index': 1 } as CSSProperties}
         >
           RSVP
         </div>
-        <div className="absolute z-10 cbg-primary bottom-[-14px] right-0 text-xs font-light w-[60%] px-3 pt-2">
+        <div
+          ref={ref2}
+          className={cn(
+            'absolute z-10 cbg-primary bottom-[-14px] right-0 text-xs font-light w-[60%] px-3 pt-2',
+            {
+              'animate-in': isInView2,
+            },
+          )}
+          style={{ '--index': 3 } as CSSProperties}
+        >
           Your presence shall be a great honour for us and our families. Please
           confirm your attendance through reservation form below
         </div>
@@ -800,6 +841,35 @@ const GiftSection = () => {
   )
 }
 
+const Photo = ({
+  imageSrc,
+  aspect,
+  idx,
+}: {
+  imageSrc: string
+  aspect: string
+  idx: number
+}) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  return (
+    <div
+      ref={ref}
+      className={cn('relative w-full overflow-hidden', aspect, {
+        'animate-in': isInView,
+      })}
+      style={{ '--index': idx + 2 } as CSSProperties}
+    >
+      <Image
+        src={imageSrc}
+        fill
+        className="object-center object-cover"
+        alt="photos"
+      />
+    </div>
+  )
+}
+
 const GallerySection = () => {
   const photos = [
     '/asep/IMG_20240203_151740.jpg',
@@ -817,17 +887,7 @@ const GallerySection = () => {
   return (
     <div className="w-full">
       {photos.map((photo, idx) => (
-        <div
-          key={idx}
-          className={'relative w-full overflow-hidden ' + aspect[idx]}
-        >
-          <Image
-            src={photo}
-            fill
-            className="object-center object-cover"
-            alt="gallery"
-          />
-        </div>
+        <Photo key={idx} imageSrc={photo} idx={idx} aspect={aspect[idx]} />
       ))}
     </div>
   )
@@ -888,7 +948,7 @@ const LeftHeroFixed = () => {
           className="absolute top-0 w-full h-full object-cover object-center opacity-20"
         />
         <div className="p-8 mt-auto text-white z-10">
-          <div>The Wedding Of</div>
+          <div className={cn('font-light', ivy.className)}>The Wedding Of</div>
           <h1
             className={cn(analogue.className, {
               'text-4xl tracking-wide py-2': true,
@@ -896,7 +956,9 @@ const LeftHeroFixed = () => {
           >
             Defi & Asep
           </h1>
-          <div>Sunday, May 05 2024</div>
+          <div className={cn('font-light', ivy.className)}>
+            Sunday, May 05 2024
+          </div>
         </div>
       </div>
     </div>

@@ -1,30 +1,39 @@
-import type { Metadata } from "next";
-import "../styles/globals.scss";
-import Provider from "./providers";
-import { inter } from "./fonts";
+import type { Metadata, Viewport } from 'next'
+import '../styles/globals.scss'
+import Provider from './providers'
+import { inter } from './fonts'
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://invitary.com"),
+  metadataBase: new URL('https://invitary.com'),
   title: {
-    default: "Invitary | Next step of website invitations",
+    default: 'Invitary | Next step of website invitations',
     template: `%s | invitary.com`,
   },
-  description: "Next step of website invitations",
-  keywords: "keywords",
+  description: 'Next step of website invitations',
+  keywords: 'keywords',
   openGraph: {
-    type: "website",
-    url: "https://invitary.com",
-    title: "Invitary | Next step of website invitations",
-    description: "Next step of website invitations",
-    siteName: "Invitary",
-    images: [{ url: "https://invitary.com/apple-touch-icon.png?" }],
+    type: 'website',
+    url: 'https://invitary.com',
+    title: 'Invitary | Next step of website invitations',
+    description: 'Next step of website invitations',
+    siteName: 'Invitary',
+    images: [{ url: 'https://invitary.com/apple-touch-icon.png?' }],
   },
-};
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="id" suppressHydrationWarning>
@@ -60,5 +69,5 @@ export default function RootLayout({
         <Provider>{children}</Provider>
       </body>
     </html>
-  );
+  )
 }
