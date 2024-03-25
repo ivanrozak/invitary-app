@@ -18,8 +18,8 @@ import { deleteComment, fetchComments } from '@/lib/useComments'
 import { formatDateTime } from '@/lib/formatdate'
 import { useParams } from 'next/navigation'
 
-const page = () => {
-  const { slug } = useParams()
+const CommentDetailPage = () => {
+  const { slug } = useParams<{ slug: string }>()
   const [loading, setLoading] = useState(false)
   const [comments, setComments] = useState<Comment[]>([])
   const [selectedComent, setSelectedComment] = useState<Comment | null>(null)
@@ -148,4 +148,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CommentDetailPage
