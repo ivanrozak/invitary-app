@@ -16,9 +16,10 @@ import {
 import { Comment } from '@/types'
 import { deleteComment, fetchComments } from '@/lib/useComments'
 import { formatDateTime } from '@/lib/formatdate'
+import { useParams } from 'next/navigation'
 
 const page = () => {
-  const userId = '656fd880b2d14968a9df7bf7'
+  const { slug } = useParams()
   const [loading, setLoading] = useState(false)
   const [comments, setComments] = useState<Comment[]>([])
   const [selectedComent, setSelectedComment] = useState<Comment | null>(null)
@@ -26,7 +27,7 @@ const page = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   const handleFetchComment = async () => {
-    const res = await fetchComments(userId)
+    const res = await fetchComments(slug.toString())
     setComments(res)
   }
 
@@ -99,22 +100,22 @@ const page = () => {
           </Tab>
           <Tab key="attendance" title="Attendance">
             <Card>
-              <CardBody className="flex-row gap-4 text-center">
+              <CardBody className="flex-row gap-4 text-center text-sm">
                 <div className="flex-1">
                   <div className="text-gray-500">Akan Hadir</div>
-                  <div className="text-2xl font-semibold mt-2">
+                  <div className="text-xl font-semibold mt-2">
                     {totalGuestsYes}
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="text-gray-500">Tidak Hadir</div>
-                  <div className="text-2xl font-semibold mt-2">
+                  <div className="text-xl font-semibold mt-2">
                     {totalGuestsNo}
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="text-gray-500">Total Tamu</div>
-                  <div className="text-2xl font-semibold mt-2">
+                  <div className="text-xl font-semibold mt-2">
                     {totalAllGuests}
                   </div>
                 </div>
