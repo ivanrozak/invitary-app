@@ -41,6 +41,7 @@ import { useSearchParams } from 'next/navigation'
 import { fetchComments, postComment } from '@/lib/useComments'
 import { Comment } from '@/types'
 import { formatDateTime } from '@/lib/formatdate'
+import { copyToClipboard } from '@/lib/utils'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
@@ -930,7 +931,11 @@ const GiftSection = () => {
                 </div>
               </ModalBody>
               <ModalFooter className="justify-center pb-8">
-                <Button color="primary" radius="none">
+                <Button
+                  color="primary"
+                  radius="none"
+                  onClick={() => copyToClipboard(accountNumber.toString())}
+                >
                   Copy Account Number
                 </Button>
               </ModalFooter>
