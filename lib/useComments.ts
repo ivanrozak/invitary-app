@@ -23,3 +23,17 @@ export const postComment = async (payload: Comment) => {
   const data = (await res.json()) as Comment[]
   return data
 }
+
+export const deleteComment = async (id: string) => {
+  const res = await fetch(window.location.origin + '/api/comment', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  })
+  const data = await res.json()
+  return data
+}

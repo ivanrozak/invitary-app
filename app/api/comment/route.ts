@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   const body = await req.json()
   const { name, content, confirmation, totalGuest, userId } = body
 
-  if (!userId || !name || !content || !confirmation || !totalGuest) {
+  if (!userId || !name || !content) {
     return new NextResponse('Missing Fields', { status: 400 })
   }
 

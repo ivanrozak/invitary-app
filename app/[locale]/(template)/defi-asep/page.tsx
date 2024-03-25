@@ -38,9 +38,9 @@ import { analogue, gothic, ivy } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import './style.css'
 import { useSearchParams } from 'next/navigation'
-import { Viewport } from 'next'
 import { fetchComments, postComment } from '@/lib/useComments'
 import { Comment } from '@/types'
+import { formatDateTime } from '@/lib/formatdate'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
@@ -714,7 +714,7 @@ const RsvpSection = () => {
       name,
       content,
       confirmation,
-      totalGuest,
+      totalGuest: confirmation === 'YES' ? totalGuest : '0',
     }
     const res = await postComment(payload)
     if (res) {
@@ -801,21 +801,25 @@ const RsvpSection = () => {
             <SelectItem key={attend.value}>{attend.label}</SelectItem>
           )}
         </Select>
-        <Select
-          items={guestOptions}
-          label="HOW MANY GUEST(S)"
-          labelPlacement="outside"
-          placeholder="&nbsp;"
-          variant="underlined"
-          color="primary"
-          classNames={{
-            label: cn(ivy.className, { '!text-white/80': true }),
-          }}
-          value={totalGuest}
-          onChange={(e) => setTotalGuest(e.target.value)}
-        >
-          {(guest) => <SelectItem key={guest.value}>{guest.label}</SelectItem>}
-        </Select>
+        {confirmation === 'YES' && (
+          <Select
+            items={guestOptions}
+            label="HOW MANY GUEST(S)"
+            labelPlacement="outside"
+            placeholder="&nbsp;"
+            variant="underlined"
+            color="primary"
+            classNames={{
+              label: cn(ivy.className, { '!text-white/80': true }),
+            }}
+            value={totalGuest}
+            onChange={(e) => setTotalGuest(e.target.value)}
+          >
+            {(guest) => (
+              <SelectItem key={guest.value}>{guest.label}</SelectItem>
+            )}
+          </Select>
+        )}
         <Textarea
           label="WISHES"
           labelPlacement="outside"
@@ -846,7 +850,9 @@ const RsvpSection = () => {
         {comments.map((comment) => (
           <div key={comment.id} className="cbg-secondary px-4 py-2 rounded-md">
             <div>{comment.name}</div>
-            <div className="text-[10px] font-light">{comment.createdAt}</div>
+            <div className="text-xs text-white/40 font-light">
+              {formatDateTime(comment.createdAt!)}
+            </div>
             <div className="font-light">{comment.content}</div>
           </div>
         ))}
