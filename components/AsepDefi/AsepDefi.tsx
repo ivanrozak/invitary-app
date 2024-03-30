@@ -963,7 +963,7 @@ const Photo = ({
       className={cn('relative w-full overflow-hidden', aspect, {
         'animate-in': isInView,
       })}
-      style={{ '--index': idx + 2 } as CSSProperties}
+      style={{ '--index': idx + 1 } as CSSProperties}
     >
       <Image
         src={imageSrc}
@@ -992,11 +992,15 @@ const GallerySection = () => {
     'aspect-[413/313]',
     'aspect-[413/313]',
     'aspect-[413/313]',
+    'aspect-[413/313]',
+    'aspect-[413/313]',
+    'aspect-[313/413]',
+    'aspect-[313/413]',
   ]
   return (
     <div className="w-full">
       {photos.map((photo, idx) => (
-        <Photo key={idx} imageSrc={photo} idx={idx} aspect={aspect[0]} />
+        <Photo key={idx} imageSrc={photo} idx={idx} aspect={aspect[idx]} />
       ))}
     </div>
   )
