@@ -994,8 +994,8 @@ const GallerySection = () => {
     'aspect-[413/313]',
     'aspect-[413/313]',
     'aspect-[413/313]',
-    'aspect-[313/413]',
-    'aspect-[313/413]',
+    'aspect-[413/313]',
+    'aspect-[413/313]',
   ]
   return (
     <div className="w-full">
