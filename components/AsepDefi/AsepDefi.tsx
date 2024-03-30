@@ -101,7 +101,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                       'text-4xl md:text-6xl tracking-wide mt-3': true,
                     })}
                   >
-                    Aseo & Defi
+                    Asep & Defi
                   </h1>
                 </div>
                 <div>
