@@ -36,7 +36,6 @@ import {
 } from '@/components/icons'
 import { analogue, gothic, ivy } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
-import './style.css'
 import { useSearchParams } from 'next/navigation'
 import { fetchComments, postComment } from '@/lib/useComments'
 import { Comment } from '@/types'
@@ -102,7 +101,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                       'text-4xl md:text-6xl tracking-wide mt-3': true,
                     })}
                   >
-                    Defi & Asep
+                    Aseo & Defi
                   </h1>
                 </div>
                 <div>
@@ -200,7 +199,7 @@ const HeroPage = () => {
               'text-4xl md:text-6xl tracking-wide mt-3': true,
             })}
           >
-            Defi & Asep
+            Asep & Defi
           </h1>
           <p className="text-sm font-light px-6 mt-4">
             No one has ever seen God; but if we love one another, God lives in
@@ -980,8 +979,12 @@ const GallerySection = () => {
   const photos = [
     '/asep/IMG_20240203_151740.jpg',
     '/asep/IMG_20240203_152928.jpg',
-    '/asep/IMG_8868.jpg',
+    '/asep/IMG_20240203_151513.jpg',
     '/asep/IMG_20240203_152323.jpg',
+    '/asep/IMG_20240130_200935.jpg',
+    '/asep/IMG_20240130_203348.jpg',
+    '/asep/IMG_20240203_113425.jpg',
+    '/asep/IMG_20240203_113616.jpg',
   ]
 
   const aspect = [
@@ -993,7 +996,7 @@ const GallerySection = () => {
   return (
     <div className="w-full">
       {photos.map((photo, idx) => (
-        <Photo key={idx} imageSrc={photo} idx={idx} aspect={aspect[idx]} />
+        <Photo key={idx} imageSrc={photo} idx={idx} aspect={aspect[0]} />
       ))}
     </div>
   )
@@ -1060,7 +1063,7 @@ const LeftHeroFixed = () => {
               'text-4xl tracking-wide py-2': true,
             })}
           >
-            Defi & Asep
+            Asep & Defi
           </h1>
           <div className={cn('font-light', ivy.className)}>
             Sunday, May 05 2024
