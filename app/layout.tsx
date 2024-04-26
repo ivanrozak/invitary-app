@@ -3,6 +3,10 @@ import '../styles/globals.scss'
 import Provider from './providers'
 import { inter } from './fonts'
 import GoogleAnalythic from '@/components/google-analythics'
+import dynamic from 'next/dynamic'
+const GAPageView = dynamic(() => import('@/components/ga-pageview'), {
+  ssr: false,
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://invitary.com'),
@@ -69,6 +73,7 @@ export default function RootLayout({
       <GoogleAnalythic />
       <body suppressHydrationWarning={true} className={inter.className}>
         <Provider>{children}</Provider>
+        <GAPageView />
       </body>
     </html>
   )
