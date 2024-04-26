@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import '../styles/globals.scss'
 import Provider from './providers'
 import { inter } from './fonts'
+import GoogleAnalythic from '@/components/google-analythics'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://invitary.com'),
@@ -65,6 +66,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </head>
+      <GoogleAnalythic />
       <body suppressHydrationWarning={true} className={inter.className}>
         <Provider>{children}</Provider>
       </body>
