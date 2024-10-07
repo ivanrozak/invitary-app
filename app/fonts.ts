@@ -72,3 +72,18 @@ export const analogue = localFont({
   src: '../fonts/Analogue.woff',
   display: 'swap',
 })
+
+export const signature = localFont({
+  src: '../fonts/Thesignature.ttf',
+  display: 'swap',
+})
+
+export const notoSerif = localFont({
+  src: '../fonts/NotoSerifDisplay.ttf',
+  display: 'swap',
+})
+
+export const usic = localFont({
+  src: '../fonts/usic.otf',
+  display: 'swap',
+})

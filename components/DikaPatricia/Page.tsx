@@ -34,7 +34,15 @@ import {
   SpeakerMuted,
   SpeakerUnmuted,
 } from '@/components/icons'
-import { analogue, gothic, ivy } from '@/app/fonts'
+import {
+  analogue,
+  canela,
+  gothic,
+  ivy,
+  notoSerif,
+  signature,
+  usic,
+} from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import { useSearchParams } from 'next/navigation'
 import { fetchComments, postComment } from '@/lib/useComments'
@@ -44,7 +52,6 @@ import { copyToClipboard } from '@/lib/utils'
 
 const Opener = ({ playAudio }: { playAudio: () => void }) => {
   const { isOpen, onOpenChange } = useDisclosure()
-  const imgUrl = '/asep/IMG_20240130_200324.jpg'
 
   const searchParams = useSearchParams()
   const user = searchParams.get('u')
@@ -84,7 +91,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
           <>
             <ModalBody className="w-full h-full relative">
               <Image
-                src={imgUrl}
+                src={'https://storage.googleapis.com/invitary/_ELP2446.jpg'}
                 fill
                 alt="hero"
                 className="object-center object-cover"
@@ -93,22 +100,22 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
               />
               <div className="absolute z-10 w-full h-full flex flex-col justify-between items-center px-4 py-32 bg-black/40 text-white/80 text-center">
                 <div>
-                  <p className="uppercase text-sm font-light">
-                    We invite you to our <br /> wedding ceremony
-                  </p>
+                  <p className="uppercase text-xs font-light">The Wedding of</p>
                   <h1
-                    className={cn(analogue.className, {
-                      'text-4xl md:text-6xl tracking-wide mt-3': true,
-                    })}
+                    className={cn(
+                      usic.className,
+                      'text-4xl md:text-6xl tracking-wide mt-3 mb-1 uppercase',
+                    )}
                   >
-                    Asep & Defi
+                    Dika & Patricia
                   </h1>
+                  <p className="uppercase text-xs font-light">
+                    Saturday, 02 November 2024
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm font-light uppercase">
-                    Special invitation:
-                  </p>
-                  <p className="text-xl font-semibold py-4">
+                  <p className="text-sm font-light">Dear,</p>
+                  <p className="text-xl font-medium py-4">
                     {user || 'Nama Tamu'}
                   </p>
                   <p className="text-[10px] font-light">
@@ -118,6 +125,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                   <Button
                     radius="none"
                     className="text-white font-light bg-black/80 tracking-wider mt-8"
+                    size="sm"
                     onPress={() => {
                       onClose()
                       playAudio()
@@ -136,83 +144,70 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
 }
 
 const CountDown = () => {
-  const countdown = useCountDown({ dueDate: '2024-05-05T11:00:00' })
+  const countdown = useCountDown({ dueDate: '2024-11-02T10:00:00' })
   return (
     <div
-      className={cn(ivy.className, {
-        'mt-8 flex justify-center items-center tracking-wider': true,
-      })}
+      className={cn(
+        ivy.className,
+        'mt-8 flex flex-col justify-center items-center tracking-wider w-full h-full bg-black/50 text-white/90',
+      )}
     >
-      <div className="py-1 min-w-[40px]">
-        <div className="text-2xl font-bold">{countdown?.days || '0'}</div>
-        <p className="text-sm">Day(s)</p>
-      </div>
-      <Divider orientation="vertical" className="mx-4 bg-white" />
-      <div className="py-1 min-w-[40px]">
-        <div className="text-2xl font-bold">{countdown?.hours || '0'}</div>
-        <p className="text-sm">Hour(s)</p>
-      </div>
-      <Divider orientation="vertical" className="mx-4 bg-white" />
-      <div className="py-1 min-w-[40px]">
-        <div className="text-2xl font-bold">{countdown?.minutes || '0'}</div>
-        <p className="text-sm">Min(s)</p>
-      </div>
-      <Divider orientation="vertical" className="mx-4 bg-white" />
-      <div className="py-1 min-w-[40px]">
-        <div className="text-2xl font-bold">{countdown?.seconds || '0'}</div>
-        <p className="text-sm">Sec(s)</p>
+      <p
+        className={cn(
+          usic.className,
+          'text-2xl text-center px-8 tracking-wide mb-4',
+        )}
+      >
+        ALMOST TIME FOR OUR CELEBRATION
+      </p>
+      <div className="flex text-center gap-6">
+        <div>
+          <div className="text-xl font-bold">{countdown?.days || '0'}</div>
+          <p className="text-xs">Day(s)</p>
+        </div>
+
+        <div>
+          <div className="text-xl font-bold">{countdown?.hours || '0'}</div>
+          <p className="text-xs">Hour(s)</p>
+        </div>
+
+        <div>
+          <div className="text-xl font-bold">{countdown?.minutes || '0'}</div>
+          <p className="text-xs">Min(s)</p>
+        </div>
+
+        <div>
+          <div className="text-xl font-bold">{countdown?.seconds || '0'}</div>
+          <p className="text-xs">Sec(s)</p>
+        </div>
       </div>
     </div>
   )
 }
 
 const HeroPage = () => {
-  const imageList: any[] = ['/asep/IMG_20240130_200324.jpg']
-
   return (
-    <section className="relative w-full h-screen">
-      {/* <Fade duration={2000} arrows={false}>
-        {imageList.map((source, i) => (
-          <div key={i} className="w-full h-screen">
-            <Image
-              src={source}
-              fill
-              className="object-cover object-center"
-              alt="oke"
-              unoptimized
-            />
-          </div>
-        ))}
-      </Fade> */}
-      <Image
-        src={imageList[0]}
-        fill
-        className="object-cover object-center"
-        alt="oke"
-        unoptimized
-      />
-      <div className="absolute w-full h-screen top-0 z-[1] text-white/80 bg-black/20 flex flex-col items-center justify-between">
-        <div className="text-center pt-16">
-          <p className="uppercase text-sm font-light">The Wedding of</p>
-          <h1
-            className={cn(analogue.className, {
-              'text-4xl md:text-6xl tracking-wide mt-3': true,
-            })}
-          >
-            Asep & Defi
-          </h1>
-          <p className="text-sm font-light px-6 mt-4">
-            No one has ever seen God; but if we love one another, God lives in
-            us and his love is made complete in us.
+    <section className="relative w-full h-[90vh] bg-[url('https://storage.googleapis.com/invitary/_ELP2430.jpg')] bg-cover bg-center">
+      <div className="w-full h-full bg-black/40 pt-8 pb-14 px-6 flex flex-col justify-between text-white/80">
+        <div className="flex justify-between text-[10px] leading-3">
+          <p>
+            SAVE THE DATE <br /> FOR THE WEDDING OF
           </p>
+          <p>NAMA TAMU</p>
         </div>
-        <div className="p-8 pb-16 text-center">
-          <CountDown />
-          <div className="mt-8 mb-12 animate-bounce">
-            <div className="mx-auto w-fit mb-3">
-              <DoubleChevronUp />
-            </div>
-            <p className="uppercase text-sm font-light">Sweep up</p>
+        <div>
+          <p
+            className={cn(
+              usic.className,
+              'text-5xl md:text-6xl tracking-wide mb-6',
+            )}
+          >
+            DIKA & <br /> PATRICIA
+          </p>
+          <div className="inline-flex w-full items-center text-xs uppercase gap-4">
+            <p className="flex-none">02 November</p>
+            <hr className="w-full border-t border-white/50" />
+            <p>2024</p>
           </div>
         </div>
       </div>
@@ -221,168 +216,156 @@ const HeroPage = () => {
 }
 
 const CoupleSection = () => {
-  const ref1 = useRef(null)
-  const isInView1 = useInView(ref1, { once: true })
-
-  const ref2 = useRef(null)
-  const isInView2 = useInView(ref2, { once: true })
-
-  const ref3 = useRef(null)
-  const isInView3 = useInView(ref3, { once: true })
-
   return (
-    <div className="w-full cbg-primary text-white/70 min-h-screen py-24 relative">
-      <div className="absolute right-0 w-[40%] h-[1px] mt-36 border-b border-white/50 my-auto" />
-      <div ref={ref1} className="relative w-[60%]">
-        <Image
-          src="/asep/IMG_20240130_105642.jpg"
-          width={260}
-          height={290}
-          className="object-cover object-center aspect-[260/290] delay-500"
-          unoptimized
-          alt="asep"
-          style={{
-            transform: isInView1 ? 'none' : 'translateX(-200px)',
-            opacity: isInView1 ? 1 : 0,
-            transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
-          }}
-        />
-        <div className="absolute z-10 -top-8 -right-20 -mt-1 -mr-1">
-          <svg
-            viewBox="0 0 100 100"
-            width="100"
-            height="100"
-            className="circle-svg"
-          >
-            <defs>
-              <path
-                id="circle"
-                d="
-            M 50, 50
-            m -37, 0
-            a 37,37 0 1,1 74,0
-            a 37,37 0 1,1 -74,0"
-              />
-            </defs>
-            <text fontSize="18">
-              <textPath xlinkHref="#circle">ASEP H - THE GROOM</textPath>
-            </text>
-          </svg>
-        </div>
+    <section className="px-6 py-20 text-white/90 flex flex-col gap-20">
+      <div className="text-center">
+        <p className={cn(signature.className, 'text-2xl')}>
+          Ecclesiastes 4:9-10
+        </p>
+        <p className="font-light text-xs mt-4 leading-6 italic">
+          Two are better than one, because they have a good reward for their
+          toil. For if they fall, one will lift up his fellow. But woe to him
+          who is alone when he falls and has not another to lift him up.
+        </p>
       </div>
-      <div className="p-6 mt-16 relative z-10">
-        <div
-          className={cn(ivy.className, {
-            'tracking-wide text-3xl mb-4': true,
-          })}
-        >
-          Asep Hermawan S.Psi
+      <div className="text-center">
+        <p className={cn(ivy.className, 'text-3xl tracking-wide leading-7')}>
+          Dika Hutomo <br />
+          Wirawan (S.Ak.)
+        </p>
+        <div className="relative aspect-square mx-auto w-[200px] my-6">
+          <Image
+            src="https://storage.googleapis.com/invitary/_ELP2832.jpg"
+            fill
+            className="object-center object-cover"
+            alt="dika"
+          />
+          <div className="w-full h-full bg-black/20 absolute"></div>
+          <p
+            className={cn(
+              signature.className,
+              'text-3xl absolute -bottom-2 -left-6',
+            )}
+          >
+            Dika
+          </p>
         </div>
-        <div
-          className={cn(gothic.className, {
-            'uppercase text-sm font-bold': true,
-          })}
-        >
-          The Son of :
-        </div>
-        <div className="text-xs mt-4 font-light">
-          Bpk. Mulyono & Ibu Tati Kurnia Hayati B
-        </div>
+        <p className="font-light italic text-xs">
+          The Son Of <br /> Andy Lee & Tati Harianto
+        </p>
         <Button
           as={Link}
-          className={cn(ivy.className, {
-            'tracking-wide mt-8 text-white/80 border-1': true,
-          })}
-          href="https://www.instagram.com/hermwn_asep/"
+          className={cn(
+            ivy.className,
+            'tracking-wide mt-8 text-white/80 border-1',
+          )}
+          href="https://www.instagram.com/dikalie/"
           startContent={<InstagramIcon className="w-5 h-5" />}
           radius="none"
           variant="bordered"
+          size="sm"
         >
           INSTAGRAM
         </Button>
       </div>
-      <div className="flex items-end relative">
-        <Image
-          src="/asep/gunungan.png"
-          width={945}
-          height={1571}
-          className="absolute w-[60%] -bottom-6 -left-16 opacity-[7%]"
-          unoptimized
-          alt="gunungan"
-        />
-        <div
-          className={cn(gothic.className, {
-            'uppercase text-sm tracking-wide font-bold ml-10 relative z-10':
-              true,
-          })}
-        >
-          05.05.2024
-        </div>
-        <div className="relative aspect-[220/213] w-[50%] ml-auto z-10">
+      <div className="text-center">
+        <p className={cn(ivy.className, 'text-3xl tracking-wide leading-7')}>
+          Patricia Ayu <br /> Catur Cahyani (S.I. Kom)
+        </p>
+        <div className="relative aspect-square mx-auto w-[200px] my-6">
           <Image
-            ref={ref2}
-            src="/asep/IMG_20240203_114054.jpg"
+            src="https://storage.googleapis.com/invitary/_ELP3174.jpg"
             fill
-            className={cn('object-center object-cover delay-500', {
-              'animate-fade-in-right': isInView2,
-            })}
-            style={{ '--index': 1 } as CSSProperties}
-            alt="oke"
+            className="object-center object-cover"
+            alt="patt"
           />
+          <div className="w-full h-full bg-black/20 absolute"></div>
+          <p
+            className={cn(
+              signature.className,
+              'text-3xl absolute -bottom-2 -left-6',
+            )}
+          >
+            Patricia
+          </p>
+        </div>
+        <p className="font-light italic text-xs">
+          The Daughter Of <br /> Alm Fx Herry Chandra & Theresia Indrasuri
+        </p>
+        <Button
+          as={Link}
+          className={cn(
+            ivy.className,
+            'tracking-wide mt-8 text-white/80 border-1',
+          )}
+          href="https://www.instagram.com/patriciapaattyy/"
+          startContent={<InstagramIcon className="w-5 h-5" />}
+          radius="none"
+          variant="bordered"
+          size="sm"
+        >
+          INSTAGRAM
+        </Button>
+      </div>
+    </section>
+  )
+}
+
+const EventSection = () => {
+  return (
+    <section>
+      <div className="border-t border-white/50 px-6 py-12 text-white/90">
+        <p className={cn(usic.className, 'text-3xl tracking-wide mb-4')}>
+          HOLLY MATRIMONY
+        </p>
+        <div className="uppercase mb-4">
+          <p>Saturday, 02 November 2024</p>
+          <p>AT 10.00 - 11. 00 AM</p>
+        </div>
+        <div>
+          <p className="text-sm mb-1 font-medium">Vihara Pusdiklat Maitreya</p>
+          <p className="font-light text-sm">
+            Jl. Komplek Perumahan Duta Mas Blok A8, RT.11/RW.5, Wijaya Kusuma,
+            Kec. Grogol petamburan, Kota Jakarta Barat 11460
+          </p>
+        </div>
+        <Link
+          className="underline text-white/80 mt-6 text-sm font-medium"
+          href="https://www.google.com/maps/place/Vihara+Pusdiklat+Maitreya/@-6.149775,106.780887,15z/data=!4m6!3m5!1s0x2e69f62f075f1bd5:0xf9d5d8055eeb87fa!8m2!3d-6.149775!4d106.780887!16s%2Fg%2F11bc7p_v4k?entry=ttu&g_ep=EgoyMDI0MDkxOC4xIKXMDSoASAFQAw%3D%3D"
+        >
+          GOOGLE MAPS
+        </Link>
+      </div>
+      <div className="border-t border-white/50 px-6 py-12 text-white/90">
+        <p className={cn(usic.className, 'text-3xl tracking-wide mb-4')}>
+          WEDDING RECEPTION
+        </p>
+        <div className="uppercase mb-4">
+          <p>Saturday, 02 November 2024</p>
+          <p>AT 19.00 - 20.00 PM</p>
+        </div>
+        <div>
+          <p className="text-sm mb-1 font-medium">
+            Fraser Place Setiabudi - Jardino
+          </p>
+          <p className="font-light text-sm">
+            Kec, Jl. Setiabudi Selatan Raya No.2 Kel.Karet, RT.18/RW.2, Karet
+            Kuningan, Setiabudi, Jakarta 12920
+          </p>
+        </div>
+        <Link
+          className="underline text-white/80 mt-6 text-sm font-medium"
+          href="https://www.google.com/maps/place/Fraser+Place+Setiabudi/@-6.2151847,106.8268561,17z/data=!3m1!4b1!4m9!3m8!1s0x2e69f405e406d801:0x6400a97cb8e3e1ff!5m2!4m1!1i2!8m2!3d-6.21519!4d106.829431!16s%2Fg%2F11bxjlnqlq?entry=ttu&g_ep=EgoyMDI0MDkxOC4xIKXMDSoASAFQAw%3D%3D"
+        >
+          GOOGLE MAPS
+        </Link>
+      </div>
+      <div className="p-4 pt-0">
+        <div className="aspect-square full bg-[url('https://is3.cloudhost.id/externalgroovepublic/2024/06/8d7ef5c1f443735bdef996be14162f1d-1.jpg')] bg-cover bg-right">
+          <CountDown />
         </div>
       </div>
-      <div className="mt-32">
-        <div
-          className={cn(analogue.className, {
-            'text-center text-2xl mb-4': true,
-          })}
-        >
-          The bride
-        </div>
-        <div ref={ref3} className="relative aspect-video w-[90%] mx-auto">
-          <Image
-            src="/asep/IMG_20240130_203158.jpg"
-            fill
-            className={cn('object-center object-cover delay-500', {
-              'animate-fade-in': isInView3,
-            })}
-            style={{ '--index': 1 } as CSSProperties}
-            alt="asep"
-          />
-        </div>
-        <div className="text-center px-6 mt-4">
-          <div
-            className={cn(ivy.className, {
-              'tracking-wide text-3xl mb-4': true,
-            })}
-          >
-            Defi Mira Wibowo A.Md.Keb
-          </div>
-          <div
-            className={cn(gothic.className, {
-              'uppercase text-sm font-bold': true,
-            })}
-          >
-            The Daughter of :
-          </div>
-          <div className="text-xs mt-4 font-light">
-            Bpk. Sri Kukuh Wibowo & Ibu Toyimah
-          </div>
-          <Button
-            as={Link}
-            className={cn(ivy.className, {
-              'tracking-wide mt-8 text-white/80 border-1': true,
-            })}
-            href="https://www.instagram.com/devimirawibowo/"
-            startContent={<InstagramIcon className="w-5 h-5" />}
-            radius="none"
-            variant="bordered"
-          >
-            INSTAGRAM
-          </Button>
-        </div>
-      </div>
-    </div>
+    </section>
   )
 }
 
@@ -446,126 +429,6 @@ const LoveStory = () => {
           </p>
         </div>
       </div>
-    </div>
-  )
-}
-
-const EventSection = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  return (
-    <div className="w-full cbg-primary text-white/70 py-12 px-10 relative overflow-hidden">
-      <div className="absolute w-full h-[1px] mt-32 border-b border-white/50 -mx-10" />
-      <div>
-        <div className="relative aspect-[335/223]">
-          <Image
-            src="/asep/IMG_20240203_112951.jpg"
-            fill
-            className="object-center object-cover"
-            alt="asep"
-          />
-        </div>
-        <div
-          ref={ref}
-          className={cn('text-center mt-8', { 'animate-in': isInView })}
-          style={{ '--index': 4 } as CSSProperties}
-        >
-          <div
-            className={cn(ivy.className, {
-              'tracking-wide font-bold mb-4': true,
-            })}
-          >
-            AKAD NIKAH
-          </div>
-          <div
-            className={cn(ivy.className, {
-              'tracking-wide mb-4': true,
-            })}
-          >
-            SUNDAY, May 05 2024 <br />
-            07.30 WIB
-          </div>
-          <div
-            className={cn(gothic.className, {
-              'uppercase font-bold': true,
-            })}
-          >
-            Masjid Babussalam
-          </div>
-          <div className="text-xs mt-2 font-light">
-            Jl Laksda Yos Sudarso 27-29, Jakarta Utara, <br /> Daerah Khusus
-            Ibukota Jakarta 14320. <br />
-            (Kantor Walikota Jakarta Utara)
-          </div>
-          <div
-            className={cn(ivy.className, {
-              'tracking-wide font-bold mb-4 mt-14': true,
-            })}
-          >
-            RECEPTION
-          </div>
-          <div
-            className={cn(ivy.className, {
-              'tracking-wide mb-4': true,
-            })}
-          >
-            SUNDAY, MAY 05 2024 <br />
-            11.00 - 13.00 WIB
-          </div>
-          <div
-            className={cn(gothic.className, {
-              'uppercase font-bold': true,
-            })}
-          >
-            Masjid Babussalam
-          </div>
-          <div className="text-xs mt-2 font-light">
-            Jl Laksda Yos Sudarso 27-29, Jakarta Utara, <br /> Daerah Khusus
-            Ibukota Jakarta 14320. <br />
-            (Kantor Walikota Jakarta Utara)
-          </div>
-          <div className="grid grid-cols-2 w-[90%] mx-auto text-center border-t border-b border-white/80 text-xs mt-12">
-            <div>
-              <Link
-                className={cn(
-                  ivy.className,
-                  'py-3 tracking-wide text-white/80 text-xs',
-                )}
-                href="http://maps.google.com/maps?daddr=-6.119640877291275,106.89136136680439"
-              >
-                GOOGLE MAPS
-              </Link>
-            </div>
-            <div className="border-l">
-              <Link
-                className={cn(
-                  ivy.className,
-                  'py-3 tracking-wide text-white/80 text-xs',
-                )}
-                href="https://calendar.google.com/calendar/u/0/r/eventedit?text=The+Wedding+of+Defi+and+Asep&details&dates=20240505/20240505&location=Gedung+Serbaguna+Masjid+Babussalam"
-              >
-                SAVE THE DATE
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Image
-        src="/asep/gunungan.png"
-        width={945}
-        height={1571}
-        className="absolute w-[55%] bottom-32 -left-[142px] opacity-[7%]"
-        unoptimized
-        alt="gunungan"
-      />
-      <Image
-        src="/asep/gunungan.png"
-        width={945}
-        height={1571}
-        className="absolute w-[55%] bottom-32 -right-[142px] opacity-[7%]"
-        unoptimized
-        alt="gunungan"
-      />
     </div>
   )
 }
@@ -1045,7 +908,6 @@ const ThankyouSection = () => {
 }
 
 const LeftHeroFixed = () => {
-  const imgUrl = '/asep/IMG_20240203_113752.jpg'
   return (
     <div
       className="fixed top-0 z-10 h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-bottom"
@@ -1069,10 +931,10 @@ const LeftHeroFixed = () => {
               'text-4xl tracking-wide py-2': true,
             })}
           >
-            Asep & Defi
+            Dika & Patricia
           </h1>
           <div className={cn('font-light', ivy.className)}>
-            Sunday, May 05 2024
+            Saturday, 02 November 2024
           </div>
         </div>
       </div>
@@ -1081,7 +943,8 @@ const LeftHeroFixed = () => {
 }
 
 const AudioSection = forwardRef((props, ref) => {
-  const audioUrl = '/asep/jawa_rustic.mp3'
+  const audioUrl =
+    'https://storage.googleapis.com/invitary/Tim%20Halperin%20-%20Forever%20Starts%20Today%20(Official%20Audio)%20-%20Tim%20Halperin%20(youtube).mp3'
 
   const [audioLoaded, setAudioLoaded] = useState(false)
   const [audioPlaying, setAudioPlaying] = useState(false)
@@ -1155,38 +1018,29 @@ const AudioSection = forwardRef((props, ref) => {
 
 AudioSection.displayName = 'AudioSection'
 
-export default function AsepPage() {
-  // const [themeData, setData] = useState()
+export default function DikaPatricia() {
   const audioRef = useRef(null)
   const playAudio = () => {
     // @ts-ignore
     audioRef.current?.playAudio()
   }
-  // const fetchData = async () => {
-  //   const res = await fetch(
-  //     'http://localhost:3002/api/theme?themeId=65b54bb784603ab3cf9e09c5',
-  //   )
-  //   const data = await res.json()
-  //   setData(data)
-  // }
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
   return (
     <div>
       <Opener playAudio={playAudio} />
       <AudioSection ref={audioRef} />
       <LeftHeroFixed />
-      <div className="w-full md:max-w-[510px] ml-auto md:pl-[0.3px]">
-        <HeroPage />
-        <CoupleSection />
-        <LoveStory />
-        <EventSection />
-        <LiveStream />
-        <RsvpSection />
-        <GiftSection />
-        <GallerySection />
-        <ThankyouSection />
+      <div className="w-full md:max-w-[510px] ml-auto md:pl-[0.3px] bg-[url('https://i.pinimg.com/564x/fc/ce/5f/fcce5f394b1c3c0e1f56416400f00825.jpg')] bg-cover bg-center h-screen overflow-hidden">
+        <div className="w-full h-full overflow-y-auto bg-black/60">
+          <HeroPage />
+          <CoupleSection />
+          {/* <LoveStory /> */}
+          <EventSection />
+          {/* <LiveStream /> */}
+          <RsvpSection />
+          <GiftSection />
+          <GallerySection />
+          <ThankyouSection />
+        </div>
       </div>
     </div>
   )
