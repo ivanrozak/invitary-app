@@ -336,6 +336,7 @@ const EventSection = () => {
           GOOGLE MAPS
         </Link>
       </div>
+
       <div className="border-t border-white/50 px-6 py-12 text-white/90">
         <p className={cn(usic.className, 'text-3xl tracking-wide mb-4')}>
           WEDDING RECEPTION
