@@ -186,14 +186,16 @@ const CountDown = () => {
 }
 
 const HeroPage = () => {
+  const searchParams = useSearchParams()
+  const user = searchParams.get('u')
   return (
     <section className="relative w-full h-[90vh] bg-[url('https://storage.googleapis.com/invitary/_ELP2430.jpg')] bg-cover bg-center">
-      <div className="w-full h-full bg-black/40 pt-8 pb-14 px-6 flex flex-col justify-between text-white/80">
+      <div className="w-full h-full bg-black/30 pt-8 pb-14 px-6 flex flex-col justify-between text-white/80">
         <div className="flex justify-between text-[10px] leading-3">
           <p>
             SAVE THE DATE <br /> FOR THE WEDDING OF
           </p>
-          <p>NAMA TAMU</p>
+          <p>{user || 'NAMA TAMU'}</p>
         </div>
         <div>
           <p
@@ -361,83 +363,12 @@ const EventSection = () => {
           GOOGLE MAPS
         </Link>
       </div>
-      <div className="p-4 pt-0">
+      <div className="p-4 pt-0 pb-12">
         <div className="aspect-square full bg-[url('https://is3.cloudhost.id/externalgroovepublic/2024/06/8d7ef5c1f443735bdef996be14162f1d-1.jpg')] bg-cover bg-right">
           <CountDown />
         </div>
       </div>
     </section>
-  )
-}
-
-const LiveStream = () => {
-  // const ref = useRef(null)
-  // const isInView = useInView(ref, { once: true })
-  return (
-    <div className="cbg-secondary text-white/80 text-center px-12 min-h-[60vh] py-24 flex flex-col items-center justify-center relative">
-      <video
-        src="/static/palm_tree_chroma.mp4"
-        muted
-        autoPlay
-        playsInline
-        loop
-        className="absolute top-0 w-full h-full object-cover object-center opacity-20"
-      />
-      <div
-        // ref={ref}
-        // className={cn('z-10', { 'animate-in': isInView })}
-        // style={{ '--index': 4 } as CSSProperties}
-        className="z-10"
-      >
-        <div className={cn(ivy.className, 'mb-4 tracking-wide')}>
-          QS. Ar Rum ayat 21
-        </div>
-        <div className="text-lg font-light leading-8">
-          وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا
-          لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ
-          اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
-        </div>
-        <div className="text-sm font-light mt-4">
-          Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan
-          pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa
-          tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih
-          sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat
-          tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
-        </div>
-        <div className="mt-16">
-          <div className={cn(gothic.className, 'text-base uppercase')}>
-            Turut Mengundang
-          </div>
-          <div
-            className={cn(ivy.className, 'text-sm mb-2 mt-3 tracking-wider')}
-          >
-            Pihak Perempuan :
-          </div>
-          <ul className="flex flex-col gap-1 font-light text-xs">
-            <li>
-              Bapak. Dr. ALI MAULANA HAKIM, S.IP, M.Si (Walikota Kota ADM.{' '}
-              <br />
-              Jakarta Utara)
-            </li>
-            <li>
-              Bapak Sigit Wijatmoko, AP, M.Si (Asisten Pemerintahan Sekda <br />
-              Provinsi DKI Jakarta)
-            </li>
-            <li>Keluarga Besar Bapak Alm. H. Muhadi</li>
-            <li>Keluarga Besar Bapak Alm. Reso Wiyono</li>
-          </ul>
-          <div
-            className={cn(ivy.className, 'text-sm mb-2 mt-3 tracking-wider')}
-          >
-            Pihak Laki-laki :
-          </div>
-          <ul className="flex flex-col gap-1 font-light text-xs">
-            <li>Keluarga Besar Bapak Alm. Drs. E. L. Bachtiar</li>
-            <li>Keluarga Besar Bapak Alm. Tarsa Nitidisastra</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -502,7 +433,7 @@ const RsvpSection = () => {
     }
   }, [name, content])
 
-  const handlePostComment = async () => {
+  const handlePostComment: () => Promise<void> = async () => {
     validate()
     if (!name || !content) {
       console.log('masuk sini')
@@ -516,12 +447,13 @@ const RsvpSection = () => {
       confirmation,
       totalGuest: confirmation === 'YES' ? totalGuest : '0',
     }
-    const res = await postComment(payload)
-    if (res) {
-      resetFields()
-      handleFetchComment()
-      setLoading(false)
-    }
+    console.log(payload)
+    // const res = await postComment(payload)
+    // if (res) {
+    //   resetFields()
+    //   handleFetchComment()
+    //   setLoading(false)
+    // }
   }
 
   const resetFields = () => {
@@ -536,40 +468,16 @@ const RsvpSection = () => {
   }, [])
 
   return (
-    <div className="w-full cbg-primary text-white/70 py-16">
-      <div className="relative ml-auto aspect-[374/320] w-[90%]">
-        <div
-          ref={ref1}
-          className={cn(
-            ivy.className,
-            'absolute top-0 left-0 z-10 cbg-primary tracking-wide text-3xl font-bold pr-4 pb-3',
-            { 'animate-fade-in-left': isInView1 },
-          )}
-          style={{ '--index': 1 } as CSSProperties}
-        >
-          RSVP
-        </div>
-        <div
-          ref={ref2}
-          className={cn(
-            'absolute z-10 cbg-primary bottom-[-14px] right-0 text-xs font-light w-[60%] px-3 pt-2',
-            {
-              'animate-in': isInView2,
-            },
-          )}
-          style={{ '--index': 3 } as CSSProperties}
-        >
-          Your presence shall be a great honour for us and our families. Please
-          confirm your attendance through reservation form below
-        </div>
-        <Image
-          src="/asep/IMG_20240130_203035.jpg"
-          fill
-          className="object-center object-cover"
-          alt="asep"
-        />
-      </div>
-      <div className="px-6 py-6 flex flex-col gap-4">
+    <section className="border-t border-white/50 px-8 py-12 text-white/90">
+      <p className="text-xl mb-4">
+        KINDLY CONFIRM YOUR PRESENCE AND SHARE YOUR BLESSINGS
+      </p>
+      <p className="text-xs font-light leading-5">
+        We kindly request your prompt response to confirm your attendance at our
+        upcoming event. Alongside your RSVP, please take a moment to extend your
+        warm regards and best wishes.{' '}
+      </p>
+      <div className="flex flex-col gap-4 mt-10">
         <Input
           label="NAME"
           labelPlacement="outside"
@@ -635,56 +543,97 @@ const RsvpSection = () => {
           errorMessage={invalidContent && 'Wishes is required'}
         />
         <Button
-          className={cn(
-            'w-fit cbg-secondary text-white font-light tracking-wider',
-            ivy.className,
-          )}
+          className={cn('w-fit font-light tracking-wider', ivy.className)}
           radius="none"
           isLoading={loading}
           onClick={handlePostComment}
+          size="sm"
         >
           CONFIRM
         </Button>
       </div>
-      <div className="text-sm text-white/80 px-6 overflow-y-auto max-h-[50vh] flex flex-col gap-2">
+      <div className="text-sm text-white/80 overflow-y-auto max-h-[50vh] flex flex-col gap-2 mt-6">
         {comments.map((comment) => (
-          <div key={comment.id} className="cbg-secondary px-4 py-2 rounded-md">
+          <div key={comment.id} className="bg-white/5 px-4 py-2">
             <div>{comment.name}</div>
             <div className="text-xs text-white/40 font-light">
               {formatDateTime(comment.createdAt!)}
             </div>
-            <div className="font-light">{comment.content}</div>
+            <div className="break-words whitespace-pre-line font-light">
+              {comment.content}
+            </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
+  )
+}
+
+const GallerySection = () => {
+  const imageList: string[] = [
+    'https://storage.googleapis.com/invitary/_ELP2430.jpg',
+    'https://storage.googleapis.com/invitary/_ELP2446.jpg',
+    'https://storage.googleapis.com/invitary/_ELP3000.jpg',
+    'https://storage.googleapis.com/invitary/_ELP3095.jpg',
+    'https://storage.googleapis.com/invitary/_ELP3105.jpg',
+    'https://storage.googleapis.com/invitary/_ELP3112.jpg',
+  ]
+
+  // Calculate the middle index
+  const middleIndex = Math.ceil(imageList.length / 2)
+
+  // Split the array in half
+  const firstHalf = imageList.slice(0, middleIndex)
+  const secondHalf = imageList.slice(middleIndex)
+  return (
+    <section className="px-8 py-12 border-t border-white/50 text-white/80">
+      <p className={cn(usic.className, 'text-3xl tracking-wide mb-4')}>
+        OUR GALLERY
+      </p>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="grid gap-4">
+          {firstHalf.map((image, index) => (
+            <div key={index}>
+              <img className="h-auto max-w-full" src={image} alt="" />
+            </div>
+          ))}
+        </div>
+        <div className="grid gap-4">
+          {secondHalf.map((image, index) => (
+            <div key={index}>
+              <img className="h-auto max-w-full" src={image} alt="" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
 const GiftSection = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
-  const accountNumber = 4140883595
+  const accountNumber = 4300363305
   return (
-    <div className="cbg-secondary text-white/80 px-8 pt-24 pb-16">
+    <div className="text-white/90 px-8 py-12 border-t border-white/50">
       <div className="grid grid-cols-2 gap-3">
         <div className="pt-12">
           <div className="relative aspect-[177/217]">
             <Image
-              src="/asep/IMG_20240130_200809.jpg"
+              src="https://storage.googleapis.com/invitary/_ELP3112.jpg"
               fill
               className="object-center object-cover"
-              alt="asep"
+              alt="dika"
             />
           </div>
         </div>
         <div>
           <div className="relative aspect-[157/173]">
             <Image
-              src="/asep/IMG_20240130_202834.jpg"
+              src="https://storage.googleapis.com/invitary/_ELP3105.jpg"
               fill
               className="object-center object-cover"
-              alt="asep"
+              alt="pat"
             />
           </div>
           <div
@@ -692,22 +641,23 @@ const GiftSection = () => {
               'tracking-wide text-2xl mt-4': true,
             })}
           >
-            Love Gift
+            Wedding Gift
           </div>
         </div>
       </div>
       <p className="text-xs font-light text-center mt-4 px-4">
-        Your presence at our wedding is the greatest gift we could receive. Your
-        good wishes and joy will make our day truly memorable.
+        For those of you who want to give a token of love to the bride and
+        groom, you can use the virtual account E-wallet below:
       </p>
       <div className="flex justify-center items-center">
         <Button
           onPress={onOpen}
           radius="none"
-          color="primary"
+          color="default"
           className={cn(ivy.className, {
-            'tracking-wide mt-8 text-center cbg-primary': true,
+            'tracking-wide mt-8 text-center bg-white/90': true,
           })}
+          size="sm"
         >
           CLICK HERE
         </Button>
@@ -726,7 +676,7 @@ const GiftSection = () => {
                 <div className="text-center text-sm flex flex-col gap-2 mt-4">
                   <p>BCA (Bank Central Asia)</p>
                   <p className="font-semibold">{accountNumber}</p>
-                  <p>AN/ Defi Mira Wibowo</p>
+                  <p>AN/ Dika Hutomo</p>
                 </div>
               </ModalBody>
               <ModalFooter className="justify-center pb-8">
@@ -746,133 +696,58 @@ const GiftSection = () => {
   )
 }
 
-const Photo = ({
-  imageSrc,
-  aspect,
-  idx,
-}: {
-  imageSrc: string
-  aspect: string
-  idx: number
-}) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  return (
-    <div
-      ref={ref}
-      className={cn('relative w-full overflow-hidden', aspect, {
-        'animate-in': isInView,
-      })}
-      style={{ '--index': idx + 1 } as CSSProperties}
-    >
-      <Image
-        src={imageSrc}
-        fill
-        className="object-center object-cover"
-        alt="photos"
-      />
-    </div>
-  )
-}
-
-const GallerySection = () => {
-  const photos = [
-    '/asep/IMG_20240203_151740.jpg',
-    '/asep/IMG_20240203_152928.jpg',
-    '/asep/IMG_20240203_151513.jpg',
-    '/asep/IMG_20240203_152323.jpg',
-    '/asep/IMG_20240130_200935.jpg',
-    '/asep/IMG_20240130_203348.jpg',
-    '/asep/IMG_20240203_113425.jpg',
-    '/asep/IMG_20240203_113616.jpg',
-  ]
-
-  const aspect = [
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-    'aspect-[413/313]',
-  ]
-  return (
-    <div className="w-full">
-      {photos.map((photo, idx) => (
-        <Photo key={idx} imageSrc={photo} idx={idx} aspect={aspect[idx]} />
-      ))}
-    </div>
-  )
-}
-
 const ThankyouSection = () => {
   return (
-    <div className="cbg-secondary text-white/80 text-center px-8 pt-20 pb-16 relative overflow-hidden">
-      <Image
-        src="/asep/gunungan.png"
-        width={945}
-        height={1571}
-        className="absolute w-[50%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[7%]"
-        unoptimized
-        alt="gunungan"
-      />
-      <div className="relative z-10">
-        <div
-          className={cn(ivy.className, {
-            'tracking-wide text-3xl mt-4': true,
-          })}
-        >
-          Thank You!
+    <section className="p-8">
+      <div className="aspect-square bg-[#a8a8a8] w-full text-center p-6 flex flex-col gap-4 text-[#4c3228]">
+        <div className={cn(usic.className, 'tracking-wide text-2xl uppercase')}>
+          Thank You
         </div>
-        <p className="text-xs font-light mt-8 leading-5">
-          Thank you for your kind words, prayers, and willingness to come in our
-          wedding celebration. We wish your understanding for all health
-          protocols restriction. <br />
-          See you on our wedding day !
+        <div className="aspect-square relative w-[200px] mx-auto">
+          <Image
+            src="https://storage.googleapis.com/invitary/_ELP3095.jpg"
+            fill
+            className="object-center object-cover"
+            alt="dika"
+          />
+          <div className="w-full h-full bg-black/20 absolute"></div>
+          <p
+            className={cn(
+              signature.className,
+              'text-3xl text-white/90 absolute bottom-16 -right-10',
+            )}
+          >
+            Dika & Patricia
+          </p>
+        </div>
+        <p className="text-xs italic font-light">
+          It is a pleasure and honor for us, if you are willing to attend and
+          give us your blessing.
         </p>
-        <div
-          className={cn(ivy.className, {
-            'tracking-wide text-xl mt-32': true,
-          })}
-        >
-          Powered by
-        </div>
-        <p className="font-light text-xs mt-4">invitary.com</p>
       </div>
-    </div>
+      <div className="mt-12 mb-12 text-white/80 text-center text-[10px] font-light">
+        <p>CREATED BY INVITARY.COM</p>
+      </div>
+    </section>
   )
 }
 
 const LeftHeroFixed = () => {
   return (
-    <div
-      className="fixed top-0 z-10 h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-bottom"
-      style={{
-        backgroundImage: `url(https://storage.cloud.google.com/invitary/_ELP2446.jpg)`,
-      }}
-    >
+    <div className="fixed top-0 z-10 bg-[url(https://storage.cloud.google.com/invitary/_ELP2446.jpg)] h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-center">
       <div className="relative w-full h-full flex items-end overflow-hidden">
-        <video
-          src="https://groovepublic.com/wp-content/uploads/2023/01/flars-online-video-cutter.com_.mp4"
-          muted
-          autoPlay
-          playsInline
-          loop
-          className="absolute top-0 w-full h-full object-cover object-center opacity-20"
-        />
+        <div className="absolute w-full h-full bg-black/30"></div>
         <div className="p-8 mt-auto text-white z-10">
-          <div className={cn('font-light', ivy.className)}>The Wedding Of</div>
+          <div className={cn('font-light uppercase', ivy.className)}>
+            The Wedding
+          </div>
           <h1
-            className={cn(analogue.className, {
-              'text-4xl tracking-wide py-2': true,
+            className={cn(usic.className, {
+              'text-4xl uppercase tracking-wide py-2': true,
             })}
           >
             Dika & Patricia
           </h1>
-          <div className={cn('font-light', ivy.className)}>
-            Saturday, 02 November 2024
-          </div>
         </div>
       </div>
     </div>
@@ -966,13 +841,12 @@ export default function DikaPatricia() {
       <Opener playAudio={playAudio} />
       <AudioSection ref={audioRef} />
       <LeftHeroFixed />
-      <div className="w-full md:max-w-[510px] ml-auto md:pl-[0.3px] bg-[url('https://i.pinimg.com/564x/fc/ce/5f/fcce5f394b1c3c0e1f56416400f00825.jpg')] bg-cover bg-center h-screen overflow-hidden">
-        <div className="w-full h-full overflow-y-auto bg-black/60">
+      <div className="w-full md:max-w-[510px] ml-auto md:pl-[0.3px] relative">
+        <div className="fixed md:max-w-[510px] ml-auto md:pl-[0.3px] top-0 inset-0 w-full h-screen bg-[url('https://i.pinimg.com/564x/fc/ce/5f/fcce5f394b1c3c0e1f56416400f00825.jpg')] bg-cover bg-center"></div>
+        <div className="relative w-full h-full overflow-y-auto bg-black/50">
           <HeroPage />
           <CoupleSection />
-          {/* <LoveStory /> */}
           <EventSection />
-          {/* <LiveStream /> */}
           <RsvpSection />
           <GiftSection />
           <GallerySection />
