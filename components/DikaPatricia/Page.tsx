@@ -35,11 +35,7 @@ import {
   SpeakerUnmuted,
 } from '@/components/icons'
 import {
-  analogue,
-  canela,
-  gothic,
   ivy,
-  notoSerif,
   signature,
   usic,
 } from '@/app/fonts'
@@ -253,7 +249,7 @@ const CoupleSection = () => {
           </p>
         </div>
         <p className="font-light italic text-xs">
-          The Son Of <br /> Andy Lee & Tati Harianto
+          The Son Of <br /> Andi Lie Wirawan & Tati Harianto
         </p>
         <Button
           as={Link}
@@ -399,7 +395,7 @@ const RsvpSection = () => {
     },
   ]
 
-  const userId = '656fd880b2d14968a9df7bf7'
+  const userId = '6704c39c7415de6ba0aad6f0'
   const [loading, setLoading] = useState(false)
   const [comments, setComments] = useState<Comment[]>([])
   const [name, setName] = useState('')
@@ -447,13 +443,12 @@ const RsvpSection = () => {
       confirmation,
       totalGuest: confirmation === 'YES' ? totalGuest : '0',
     }
-    console.log(payload)
-    // const res = await postComment(payload)
-    // if (res) {
-    //   resetFields()
-    //   handleFetchComment()
-    //   setLoading(false)
-    // }
+    const res = await postComment(payload)
+    if (res) {
+      resetFields()
+      handleFetchComment()
+      setLoading(false)
+    }
   }
 
   const resetFields = () => {
@@ -842,7 +837,7 @@ export default function DikaPatricia() {
       <AudioSection ref={audioRef} />
       <LeftHeroFixed />
       <div className="w-full md:max-w-[510px] ml-auto md:pl-[0.3px] relative">
-        <div className="fixed md:max-w-[510px] ml-auto md:pl-[0.3px] top-0 inset-0 w-full h-screen bg-[url('https://i.pinimg.com/564x/fc/ce/5f/fcce5f394b1c3c0e1f56416400f00825.jpg')] bg-cover bg-center"></div>
+        <div className="fixed md:max-w-[510px] ml-auto md:pl-[0.3px] top-0 inset-0 w-full h-screen bg-[url('/static/bg_nude_pallete.jpg')] bg-cover bg-center"></div>
         <div className="relative w-full h-full overflow-y-auto bg-black/50">
           <HeroPage />
           <CoupleSection />
