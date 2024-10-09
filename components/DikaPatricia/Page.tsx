@@ -341,7 +341,7 @@ const EventSection = () => {
         </p>
         <div className="uppercase mb-4">
           <p>Saturday, 02 November 2024</p>
-          <p>AT 19.00 - 20.00 PM</p>
+          <p>AT 18.00 - 20.00 PM</p>
         </div>
         <div>
           <p className="text-sm mb-1 font-medium">
