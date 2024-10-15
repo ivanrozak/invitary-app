@@ -34,11 +34,7 @@ import {
   SpeakerMuted,
   SpeakerUnmuted,
 } from '@/components/icons'
-import {
-  ivy,
-  signature,
-  usic,
-} from '@/app/fonts'
+import { ivy, signature, usic } from '@/app/fonts'
 import useCountDown from '@/hooks/useCountDown'
 import { useSearchParams } from 'next/navigation'
 import { fetchComments, postComment } from '@/lib/useComments'
@@ -214,6 +210,10 @@ const HeroPage = () => {
 }
 
 const CoupleSection = () => {
+  const ref0 = useRef(null)
+  const isInView0 = useInView(ref0, { once: true })
+  const ref1 = useRef(null)
+  const isInView1 = useInView(ref1, { once: true })
   return (
     <section className="px-6 py-20 text-white/90 flex flex-col gap-20">
       <div className="text-center">
@@ -232,18 +232,30 @@ const CoupleSection = () => {
           Wirawan (S.Ak.)
         </p>
         <div className="relative aspect-square mx-auto w-[200px] my-6">
-          <Image
-            src="https://storage.googleapis.com/invitary/_ELP2832.jpg"
-            fill
-            className="object-center object-cover"
-            alt="dika"
-          />
-          <div className="w-full h-full bg-black/20 absolute"></div>
+          <div
+            ref={ref0}
+            className={cn('w-full h-full absolute delay-500', {
+              'animate-in-reverse': isInView0,
+            })}
+            style={{ '--index': 6 } as CSSProperties}
+          >
+            <Image
+              src="https://storage.googleapis.com/invitary/_ELP2832.jpg"
+              fill
+              className="object-center object-cover"
+              alt="dika"
+            />
+            <div className="w-full h-full bg-black/20 absolute"></div>
+          </div>
           <p
             className={cn(
               signature.className,
-              'text-3xl absolute -bottom-2 -left-6',
+              'text-3xl absolute -bottom-2 -left-6 delay-500',
+              {
+                'animate-in': isInView0,
+              },
             )}
+            style={{ '--index': 7 } as CSSProperties}
           >
             Dika
           </p>
@@ -271,18 +283,30 @@ const CoupleSection = () => {
           Patricia Ayu <br /> Catur Cahyani (S.I. Kom)
         </p>
         <div className="relative aspect-square mx-auto w-[200px] my-6">
-          <Image
-            src="https://storage.googleapis.com/invitary/_ELP3174.jpg"
-            fill
-            className="object-center object-cover"
-            alt="patt"
-          />
-          <div className="w-full h-full bg-black/20 absolute"></div>
+          <div
+            ref={ref1}
+            className={cn('w-full h-full absolute delay-500', {
+              'animate-in-reverse': isInView1,
+            })}
+            style={{ '--index': 6 } as CSSProperties}
+          >
+            <Image
+              src="https://storage.googleapis.com/invitary/_ELP3174.jpg"
+              fill
+              className="object-center object-cover"
+              alt="dika"
+            />
+            <div className="w-full h-full bg-black/20 absolute"></div>
+          </div>
           <p
             className={cn(
               signature.className,
-              'text-3xl absolute -bottom-2 -left-6',
+              'text-3xl absolute -bottom-2 -left-6 delay-500',
+              {
+                'animate-in': isInView1,
+              },
             )}
+            style={{ '--index': 7 } as CSSProperties}
           >
             Patricia
           </p>
@@ -607,13 +631,23 @@ const GallerySection = () => {
 
 const GiftSection = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const ref0 = useRef(null)
+  const ref1 = useRef(null)
+  const isInView0 = useInView(ref0, { once: true })
+  const isInView1 = useInView(ref1, { once: true })
 
   const accountNumber = 4300363305
   return (
     <div className="text-white/90 px-8 py-12 border-t border-white/50">
       <div className="grid grid-cols-2 gap-3">
         <div className="pt-12">
-          <div className="relative aspect-[177/217]">
+          <div
+            ref={ref0}
+            className={cn('relative aspect-[177/217] delay-500', {
+              'animate-fade-in-left': isInView0,
+            })}
+            style={{ '--index': 2 } as CSSProperties}
+          >
             <Image
               src="https://storage.googleapis.com/invitary/_ELP3112.jpg"
               fill
@@ -623,7 +657,13 @@ const GiftSection = () => {
           </div>
         </div>
         <div>
-          <div className="relative aspect-[157/173]">
+          <div
+            ref={ref1}
+            className={cn('relative aspect-[157/173] delay-500', {
+              'animate-fade-in-right': isInView1,
+            })}
+            style={{ '--index': 2 } as CSSProperties}
+          >
             <Image
               src="https://storage.googleapis.com/invitary/_ELP3105.jpg"
               fill
