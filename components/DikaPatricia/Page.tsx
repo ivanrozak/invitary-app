@@ -83,7 +83,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
           <>
             <ModalBody className="w-full h-full relative">
               <Image
-                src={'https://storage.googleapis.com/invitary/_ELP2446.jpg'}
+                src={'/patty/_ELP2446.jpg'}
                 fill
                 alt="hero"
                 className="object-center object-cover"
@@ -181,7 +181,7 @@ const HeroPage = () => {
   const searchParams = useSearchParams()
   const user = searchParams.get('u')
   return (
-    <section className="relative w-full h-[90vh] bg-[url('https://storage.googleapis.com/invitary/_ELP2430.jpg')] bg-cover bg-center">
+    <section className="relative w-full h-[90vh] bg-[url('/patty/_ELP2430.jpg')] bg-cover bg-center">
       <div className="w-full h-full bg-black/30 pt-8 pb-14 px-6 flex flex-col justify-between text-white/80">
         <div className="flex justify-between text-[10px] leading-3">
           <p>
@@ -240,7 +240,7 @@ const CoupleSection = () => {
             style={{ '--index': 6 } as CSSProperties}
           >
             <Image
-              src="https://storage.googleapis.com/invitary/_ELP2832.jpg"
+              src="/patty/_ELP2832.jpg"
               fill
               className="object-center object-cover"
               alt="dika"
@@ -291,7 +291,7 @@ const CoupleSection = () => {
             style={{ '--index': 6 } as CSSProperties}
           >
             <Image
-              src="https://storage.googleapis.com/invitary/_ELP3174.jpg"
+              src="/patty/_ELP3174.jpg"
               fill
               className="object-center object-cover"
               alt="dika"
@@ -590,12 +590,12 @@ const RsvpSection = () => {
 
 const GallerySection = () => {
   const imageList: string[] = [
-    'https://storage.googleapis.com/invitary/_ELP2430.jpg',
-    'https://storage.googleapis.com/invitary/_ELP2446.jpg',
-    'https://storage.googleapis.com/invitary/_ELP3000.jpg',
-    'https://storage.googleapis.com/invitary/_ELP3095.jpg',
-    'https://storage.googleapis.com/invitary/_ELP3105.jpg',
-    'https://storage.googleapis.com/invitary/_ELP3112.jpg',
+    '/patty/_ELP2430.jpg',
+    '/patty/_ELP2446.jpg',
+    '/patty/_ELP3000.jpg',
+    '/patty/_ELP3095.jpg',
+    '/patty/_ELP3105.jpg',
+    '/patty/_ELP3112.jpg',
   ]
 
   // Calculate the middle index
@@ -649,7 +649,7 @@ const GiftSection = () => {
             style={{ '--index': 2 } as CSSProperties}
           >
             <Image
-              src="https://storage.googleapis.com/invitary/_ELP3112.jpg"
+              src="/patty/_ELP3112.jpg"
               fill
               className="object-center object-cover"
               alt="dika"
@@ -665,7 +665,7 @@ const GiftSection = () => {
             style={{ '--index': 2 } as CSSProperties}
           >
             <Image
-              src="https://storage.googleapis.com/invitary/_ELP3105.jpg"
+              src="/patty/_ELP3105.jpg"
               fill
               className="object-center object-cover"
               alt="pat"
@@ -740,7 +740,7 @@ const ThankyouSection = () => {
         </div>
         <div className="aspect-square relative w-[200px] mx-auto">
           <Image
-            src="https://storage.googleapis.com/invitary/_ELP3095.jpg"
+            src="/patty/_ELP3095.jpg"
             fill
             className="object-center object-cover"
             alt="dika"
@@ -791,7 +791,7 @@ const LeftHeroFixed = () => {
 
 const AudioSection = forwardRef((props, ref) => {
   const audioUrl =
-    'https://storage.googleapis.com/invitary/Tim%20Halperin%20-%20Forever%20Starts%20Today%20(Official%20Audio)%20-%20Tim%20Halperin%20(youtube).mp3'
+    '/patty/Tim%20Halperin%20-%20Forever%20Starts%20Today%20(Official%20Audio)%20-%20Tim%20Halperin%20(youtube).mp3'
 
   const [audioLoaded, setAudioLoaded] = useState(false)
   const [audioPlaying, setAudioPlaying] = useState(false)
