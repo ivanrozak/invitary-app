@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { useInView, m } from 'framer-motion'
+import { useInView } from 'framer-motion'
 import {
   Button,
   cn,
@@ -77,7 +77,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
           <>
             <ModalBody className="w-full h-full relative">
               <Image
-                src={'/patty/_ELP2446.jpg'}
+                src={'/reza/S7.jpeg'}
                 fill
                 alt="hero"
                 className="object-center object-cover"
@@ -96,7 +96,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                     Anita & Reza
                   </h1>
                   <p className="uppercase text-xs font-light">
-                    Monday, 07 April 2025
+                    Senin, 07 April 2025
                   </p>
                 </div>
                 <div>
@@ -105,8 +105,8 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                     {user || 'Nama Tamu'}
                   </p>
                   <p className="text-[10px] font-light">
-                    We apologize for any inaccuracies in the spelling of names
-                    and titles
+                    Kami mohon maaf atas ketidaksesuaian dalam penulisan nama
+                    dan gelar
                   </p>
                   <Button
                     radius="none"
@@ -175,7 +175,7 @@ const HeroPage = () => {
   const searchParams = useSearchParams()
   const user = searchParams.get('u')
   return (
-    <section className="relative w-full h-[90vh] bg-[url('/patty/_ELP2430.jpg')] bg-cover bg-center">
+    <section className="relative w-full h-[90vh] bg-[url('/reza/S1.jpeg')] bg-cover bg-center">
       <div className="w-full h-full bg-black/30 pt-8 pb-14 px-6 flex flex-col justify-between text-white/80">
         <div className="flex justify-between text-[10px] leading-3">
           <p>
@@ -211,13 +211,11 @@ const CoupleSection = () => {
   return (
     <section className="px-6 py-20 text-white/90 flex flex-col gap-20">
       <div className="text-center">
-        <p className={cn(signature.className, 'text-2xl')}>
-          Ecclesiastes 4:9-10
-        </p>
+        <p className={cn(signature.className, 'text-2xl')}>Qs. Ar Rum 21</p>
         <p className="font-light text-xs mt-4 leading-6 italic">
-          Two are better than one, because they have a good reward for their
-          toil. For if they fall, one will lift up his fellow. But woe to him
-          who is alone when he falls and has not another to lift him up.
+          Glory be to Allah who has created humans in pairs. By asking for the
+          Grace and Ridho of Allah SWT, we intend to invite you to our wedding
+          reception.
         </p>
       </div>
       <div className="text-center">
@@ -233,7 +231,7 @@ const CoupleSection = () => {
             style={{ '--index': 6 } as CSSProperties}
           >
             <Image
-              src="/patty/_ELP2832.jpg"
+              src="/reza/reza.jpeg"
               fill
               className="object-center object-cover"
               alt="redza"
@@ -284,7 +282,7 @@ const CoupleSection = () => {
             style={{ '--index': 6 } as CSSProperties}
           >
             <Image
-              src="/patty/_ELP3174.jpg"
+              src="/reza/anita.jpeg"
               fill
               className="object-center object-cover"
               alt="dika"
@@ -334,8 +332,8 @@ const EventSection = () => {
           AKAD NIKAH
         </p>
         <div className="uppercase mb-4">
-          <p>Monday, 07 April 2025</p>
-          <p>AT 08.00 AM</p>
+          <p>Senin, 07 April 2025</p>
+          <p>Pukul 08.00 WIB</p>
         </div>
         <div>
           <p className="text-sm mb-1 font-medium">Rumah Mempelai Wanita</p>
@@ -357,8 +355,8 @@ const EventSection = () => {
           WEDDING RECEPTION
         </p>
         <div className="uppercase mb-4">
-          <p>Monday, 07 April 2025</p>
-          <p>AT 10.00 AM</p>
+          <p>Senin, 07 April 2025</p>
+          <p>Pukul 10.00 WIB</p>
         </div>
         <div>
           <p className="text-sm mb-1 font-medium">Rumah Mempelai Wanita</p>
@@ -386,11 +384,11 @@ const EventSection = () => {
 const RsvpSection = () => {
   const attendOptions = [
     {
-      label: 'Yes, I will gladely attend',
+      label: 'Ya, saya akan hadir',
       value: 'YES',
     },
     {
-      label: 'No, regretfully I won`t be able to attend',
+      label: 'Tidak, dengan berat hati saya tidak dapat hadir',
       value: 'NO',
     },
   ]
@@ -478,13 +476,13 @@ const RsvpSection = () => {
         KINDLY CONFIRM YOUR PRESENCE AND SHARE YOUR BLESSINGS
       </p>
       <p className="text-xs font-light leading-5">
-        We kindly request your prompt response to confirm your attendance at our
-        upcoming event. Alongside your RSVP, please take a moment to extend your
-        warm regards and best wishes.{' '}
+        Kami dengan hormat meminta konfirmasi kehadiran Anda untuk acara kami
+        yang akan datang. Bersamaan dengan RSVP Anda, luangkanlah waktu sejenak
+        untuk menyampaikan salam dan doa terbaik.
       </p>
       <div className="flex flex-col gap-4 mt-10">
         <Input
-          label="NAME"
+          label="NAMA"
           labelPlacement="outside"
           variant="underlined"
           color="primary"
@@ -499,7 +497,7 @@ const RsvpSection = () => {
         />
         <Select
           items={attendOptions}
-          label="ATTEND"
+          label="HADIR"
           labelPlacement="outside"
           placeholder="&nbsp;"
           variant="underlined"
@@ -517,7 +515,7 @@ const RsvpSection = () => {
         {confirmation === 'YES' && (
           <Select
             items={guestOptions}
-            label="HOW MANY GUEST(S)"
+            label="TAMU YANG AKAN HADIR"
             labelPlacement="outside"
             placeholder="&nbsp;"
             variant="underlined"
@@ -534,7 +532,7 @@ const RsvpSection = () => {
           </Select>
         )}
         <Textarea
-          label="WISHES"
+          label="DOA DAN HARAPAN"
           labelPlacement="outside"
           variant="underlined"
           color="primary"
@@ -554,7 +552,7 @@ const RsvpSection = () => {
           onClick={handlePostComment}
           size="sm"
         >
-          CONFIRM
+          KONFIRMASI
         </Button>
       </div>
       <div className="text-sm text-white/80 overflow-y-auto max-h-[50vh] flex flex-col gap-2 mt-6">
@@ -576,12 +574,16 @@ const RsvpSection = () => {
 
 const GallerySection = () => {
   const imageList: string[] = [
-    '/patty/_ELP2430.jpg',
-    '/patty/_ELP2446.jpg',
-    '/patty/_ELP3000.jpg',
-    '/patty/_ELP3095.jpg',
-    '/patty/_ELP3105.jpg',
-    '/patty/_ELP3112.jpg',
+    '/reza/L1.jpeg',
+    '/reza/L4.jpeg',
+    '/reza/S1.jpeg',
+    '/reza/S2.jpeg',
+    '/reza/S5.jpeg',
+    '/reza/L6.jpeg',
+    '/reza/L7.jpeg',
+    '/reza/S6.jpeg',
+    '/reza/S7.jpeg',
+    '/reza/S8.jpeg',
   ]
 
   // Calculate the middle index
@@ -622,7 +624,7 @@ const GiftSection = () => {
   const isInView0 = useInView(ref0, { once: true })
   const isInView1 = useInView(ref1, { once: true })
 
-  const accountNumber = 4300363305
+  const accountNumber = '-'
   return (
     <div className="text-white/90 px-8 py-12 border-t border-white/50">
       <div className="grid grid-cols-2 gap-3">
@@ -635,7 +637,7 @@ const GiftSection = () => {
             style={{ '--index': 2 } as CSSProperties}
           >
             <Image
-              src="/patty/_ELP3112.jpg"
+              src="/reza/L5.jpeg"
               fill
               className="object-center object-cover"
               alt="dika"
@@ -651,7 +653,7 @@ const GiftSection = () => {
             style={{ '--index': 2 } as CSSProperties}
           >
             <Image
-              src="/patty/_ELP3105.jpg"
+              src="/reza/L2.jpeg"
               fill
               className="object-center object-cover"
               alt="pat"
@@ -667,8 +669,8 @@ const GiftSection = () => {
         </div>
       </div>
       <p className="text-xs font-light text-center mt-4 px-4">
-        For those of you who want to give a token of love to the bride and
-        groom, you can use the virtual account E-wallet below:
+        Bagi Anda yang ingin memberikan tanda kasih kepada kedua mempelai, dapat
+        menggunakan Virtual Account atau E-Wallet di bawah ini:
       </p>
       <div className="flex justify-center items-center">
         <Button
@@ -697,7 +699,7 @@ const GiftSection = () => {
                 <div className="text-center text-sm flex flex-col gap-2 mt-4">
                   <p>BCA (Bank Central Asia)</p>
                   <p className="font-semibold">{accountNumber}</p>
-                  <p>AN/ Dika Hutomo</p>
+                  <p>AN/ Anita & Reza</p>
                 </div>
               </ModalBody>
               <ModalFooter className="justify-center pb-8">
@@ -726,7 +728,7 @@ const ThankyouSection = () => {
         </div>
         <div className="aspect-square relative w-[200px] mx-auto">
           <Image
-            src="/patty/_ELP3095.jpg"
+            src="/reza/L2.jpeg"
             fill
             className="object-center object-cover"
             alt="dika"
@@ -742,8 +744,8 @@ const ThankyouSection = () => {
           </p>
         </div>
         <p className="text-xs italic font-light">
-          It is a pleasure and honor for us, if you are willing to attend and
-          give us your blessing.
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami jika Anda
+          berkenan hadir dan memberikan doa restu.
         </p>
       </div>
       <div className="mt-12 mb-12 text-white/80 text-center text-[10px] font-light">
@@ -755,7 +757,7 @@ const ThankyouSection = () => {
 
 const LeftHeroFixed = () => {
   return (
-    <div className="fixed top-0 z-10 bg-[url(/patty/_ELP2446.jpg)] h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-center">
+    <div className="fixed top-0 z-10 bg-[url(/reza/L3.jpeg)] h-screen hidden md:block w-[calc(100%-510px)] bg-cover bg-center">
       <div className="relative w-full h-full flex items-end overflow-hidden">
         <div className="absolute w-full h-full bg-black/30"></div>
         <div className="p-8 mt-auto text-white z-10">
