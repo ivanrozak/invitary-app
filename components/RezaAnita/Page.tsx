@@ -96,7 +96,7 @@ const Opener = ({ playAudio }: { playAudio: () => void }) => {
                     Anita & Reza
                   </h1>
                   <p className="uppercase text-xs font-light">
-                    Senin, 07 April 2025
+                    Rabu, 09 April 2025
                   </p>
                 </div>
                 <div>
@@ -193,7 +193,7 @@ const HeroPage = () => {
             ANITA & <br /> REZA
           </p>
           <div className="inline-flex w-full items-center text-xs uppercase gap-4">
-            <p className="flex-none">07 April</p>
+            <p className="flex-none">09 April</p>
             <hr className="w-full border-t border-white/50" />
             <p>2025</p>
           </div>
@@ -329,49 +329,27 @@ const EventSection = () => {
     <section>
       <div className="border-t border-white/50 px-6 py-12 text-white/90">
         <p className={cn(usic.className, 'text-3xl tracking-wide mb-4')}>
-          AKAD NIKAH
+          NGUNDUH MANTU
         </p>
         <div className="uppercase mb-4">
-          <p>Senin, 07 April 2025</p>
-          <p>Pukul 08.00 WIB</p>
+          <p>Rabu, 09 April 2025</p>
+          <p>Pukul 09.00 WIB</p>
         </div>
         <div>
-          <p className="text-sm mb-1 font-medium">Rumah Mempelai Wanita</p>
+          <p className="text-sm mb-1 font-medium">Rumah Mempelai Pria</p>
           <p className="font-light text-sm">
-            Jl. Kendal - Latukan, Kendal, Kendalkemlagi, Kec. Karang Geneng,
-            Kab. Lamongan, Jawa Timur
+            Ds. Kendalkemlagi, RT.03 RW.05, Kec. Karang Geneng, Kab. Lamongan,
+            Jawa Timur
           </p>
         </div>
         <Link
           className="underline text-white/80 mt-6 text-sm font-medium"
-          href="https://maps.app.goo.gl/pMfqGuoJcCWZzMWs8"
+          href="https://maps.app.goo.gl/GWPMsSzMPNYTkR28A"
         >
           GOOGLE MAPS
         </Link>
       </div>
 
-      <div className="border-t border-white/50 px-6 py-12 text-white/90">
-        <p className={cn(usic.className, 'text-3xl tracking-wide mb-4')}>
-          WEDDING RECEPTION
-        </p>
-        <div className="uppercase mb-4">
-          <p>Senin, 07 April 2025</p>
-          <p>Pukul 10.00 WIB</p>
-        </div>
-        <div>
-          <p className="text-sm mb-1 font-medium">Rumah Mempelai Wanita</p>
-          <p className="font-light text-sm">
-            Jl. Kendal - Latukan, Kendal, Kendalkemlagi, Kec. Karang Geneng,
-            Kab. Lamongan, Jawa Timur
-          </p>
-        </div>
-        <Link
-          className="underline text-white/80 mt-6 text-sm font-medium"
-          href="https://maps.app.goo.gl/pMfqGuoJcCWZzMWs8"
-        >
-          GOOGLE MAPS
-        </Link>
-      </div>
       <div className="p-4 pt-0 pb-12">
         <div className="aspect-square full bg-[url('https://is3.cloudhost.id/externalgroovepublic/2024/06/8d7ef5c1f443735bdef996be14162f1d-1.jpg')] bg-cover bg-right">
           <CountDown />
@@ -861,7 +839,7 @@ const AudioSection = forwardRef((props, ref) => {
 
 AudioSection.displayName = 'AudioSection'
 
-export default function AnitaReza() {
+export default function RezaAnita() {
   const audioRef = useRef(null)
   const playAudio = () => {
     // @ts-ignore
